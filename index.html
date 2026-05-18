@@ -1608,6 +1608,81 @@
       return 0;
     }
 
+    function buildPvgisApiUrl(searchParams, tool = "seriescalc") {
+      const trackingType = Number(searchParams.get("trackingtype") || "0");
+      const mode = searchParams.get("mode") || "grid";
+      const isTracking = mode === "tracking" || trackingType > 0;
+      const params = new URLSearchParams({
+        lat: searchParams.get("lat") || "45",
+        lon: searchParams.get("lon") || "9",
+        peakpower: searchParams.get("peakpower") || "1",
+        loss: searchParams.get("loss") || "14",
+        usehorizon: searchParams.get("usehorizon") || "1",
+        pvtechchoice: searchParams.get("pvtechchoice") || "crystSi",
+        pvcalculation: "1",
+        outputformat: "json"
+      });
+
+      if (tool === "seriescalc") {
+        params.set("startyear", searchParams.get("year") || "2023");
+        params.set("endyear", searchParams.get("year") || "2023");
+      }
+
+      if (isTracking) {
+        params.set("trackingtype", String(trackingType || 2));
+        params.set("angle", searchParams.get("angle") || "0");
+        params.set("aspect", searchParams.get("aspect") || "0");
+        params.set("fixed", "0");
+        if (tool === "PVcalc") {
+          if (trackingType === 2) {
+            params.set("twoaxis", "1");
+          } else if (trackingType === 3) {
+            params.set("vertical_axis", "1");
+            params.set("verticalaxisangle", searchParams.get("angle") || "0");
+          } else {
+            params.set("inclined_axis", "1");
+            params.set("inclinedaxisangle", searchParams.get("angle") || "0");
+          }
+        }
+      } else {
+        params.set("fixed", "1");
+        params.set("trackingtype", "0");
+        params.set("angle", searchParams.get("angle") || "10");
+        params.set("aspect", searchParams.get("aspect") || "0");
+      }
+
+      const database = searchParams.get("raddatabase");
+      if (database) params.set("raddatabase", database);
+      return `https://re.jrc.ec.europa.eu/api/v5_3/${tool}?${params.toString()}`;
+    }
+
+    async function fetchJsonStrict(url, label) {
+      const response = await fetch(url);
+      const text = await response.text();
+      if (!text.trim()) {
+        throw new Error(`${label}: risposta vuota.`);
+      }
+      let payload;
+      try {
+        payload = JSON.parse(text);
+      } catch (error) {
+        throw new Error(`${label}: risposta non JSON.`);
+      }
+      if (!response.ok || payload.error) {
+        throw new Error(payload.message || payload.error || `${label}: HTTP ${response.status}`);
+      }
+      return payload;
+    }
+
+    async function fetchPvgisJson(params, tool = "seriescalc") {
+      const localEndpoint = tool === "PVcalc" ? "/api/pvgis-performance" : "/api/pvgis";
+      try {
+        return await fetchJsonStrict(`${localEndpoint}?${params.toString()}`, "Proxy PVGIS locale");
+      } catch (localError) {
+        return fetchJsonStrict(buildPvgisApiUrl(params, tool), "PVGIS diretto");
+      }
+    }
+
     function annualPv2ModelProduction(fvSize) {
       if (usesLoadedPvgisProduction()) return pvgisAnnualProduction();
       return fvSize * numberValue("quickSpecificYield");
@@ -1643,11 +1718,7 @@
       status.textContent = `Richiesta ${pvModelLabel(model)} in corso...`;
 
       try {
-        const response = await fetch(`/api/pvgis?${params.toString()}`);
-        const payload = await response.json();
-        if (!response.ok || payload.error) {
-          throw new Error(payload.message || payload.error || "Errore PVGIS");
-        }
+        const payload = await fetchPvgisJson(params, "seriescalc");
 
         const hourly = payload.outputs && payload.outputs.hourly ? payload.outputs.hourly : [];
         const map = new Map();
@@ -1663,11 +1734,8 @@
         state.pvgisLoaded = map.size > 0;
         state.pvgisAnnualKwh = 0;
         try {
-          const performanceResponse = await fetch(`/api/pvgis-performance?${params.toString()}`);
-          const performancePayload = await performanceResponse.json();
-          if (performanceResponse.ok && !performancePayload.error) {
-            state.pvgisAnnualKwh = findAnnualPvOutput(performancePayload);
-          }
+          const performancePayload = await fetchPvgisJson(params, "PVcalc");
+          state.pvgisAnnualKwh = findAnnualPvOutput(performancePayload);
         } catch (performanceError) {
           state.pvgisAnnualKwh = 0;
         }
