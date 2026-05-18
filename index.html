@@ -3032,39 +3032,269 @@
       return btoa(chunks.join(""));
     }
 
-    async function readSpreadsheetAsCsv(file) {
-      const buffer = await file.arrayBuffer();
-      const response = await fetch("/api/parse-xlsx", {
+    function readUInt16LE(bytes, offset) {
+      return bytes[offset] | (bytes[offset + 1] << 8);
+    }
+
+    function readUInt32LE(bytes, offset) {
+      return (bytes[offset] | (bytes[offset + 1] << 8) | (bytes[offset + 2] << 16) | (bytes[offset + 3] << 24)) >>> 0;
+    }
+
+    function xlsxXmlDecode(value) {
+      return String(value || "")
+        .replace(/&quot;/g, '"')
+        .replace(/&apos;/g, "'")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&amp;/g, "&");
+    }
+
+    function xlsxAttrs(text) {
+      const result = {};
+      String(text || "").replace(/([A-Za-z_:][A-Za-z0-9_:.-]*)="([^"]*)"/g, (_, key, value) => {
+        result[key] = xlsxXmlDecode(value);
+        return "";
+      });
+      return result;
+    }
+
+    function xlsxColumnIndex(ref) {
+      const letters = String(ref || "").replace(/[^A-Z]/g, "");
+      let index = 0;
+      for (const letter of letters) {
+        index = index * 26 + (letter.charCodeAt(0) - 64);
+      }
+      return index - 1;
+    }
+
+    function findZipEntriesBrowser(bytes) {
+      let eocd = -1;
+      for (let i = bytes.length - 22; i >= 0; i -= 1) {
+        if (readUInt32LE(bytes, i) === 0x06054b50) {
+          eocd = i;
+          break;
+        }
+      }
+      if (eocd < 0) throw new Error("File XLSX non valido: archivio zip non riconosciuto.");
+
+      const total = readUInt16LE(bytes, eocd + 10);
+      const cdOffset = readUInt32LE(bytes, eocd + 16);
+      const entries = new Map();
+      const decoder = new TextDecoder("utf-8");
+      let pos = cdOffset;
+
+      for (let i = 0; i < total; i += 1) {
+        if (readUInt32LE(bytes, pos) !== 0x02014b50) break;
+        const method = readUInt16LE(bytes, pos + 10);
+        const compressedSize = readUInt32LE(bytes, pos + 20);
+        const nameLength = readUInt16LE(bytes, pos + 28);
+        const extraLength = readUInt16LE(bytes, pos + 30);
+        const commentLength = readUInt16LE(bytes, pos + 32);
+        const localOffset = readUInt32LE(bytes, pos + 42);
+        const name = decoder.decode(bytes.slice(pos + 46, pos + 46 + nameLength));
+        entries.set(name, { method, compressedSize, localOffset });
+        pos += 46 + nameLength + extraLength + commentLength;
+      }
+      return entries;
+    }
+
+    async function inflateZipEntryBrowser(compressed, method) {
+      if (method === 0) return compressed;
+      if (method !== 8) throw new Error(`Compressione XLSX non supportata: ${method}`);
+      if (typeof DecompressionStream !== "function") {
+        throw new Error("Il browser non supporta la decompressione XLSX. Usa CSV oppure pubblica l'API /api/parse-xlsx.");
+      }
+      const stream = new Blob([compressed]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
+      return new Uint8Array(await new Response(stream).arrayBuffer());
+    }
+
+    async function readZipTextBrowser(bytes, entries, name) {
+      const entry = entries.get(name);
+      if (!entry) return "";
+      const local = entry.localOffset;
+      if (readUInt32LE(bytes, local) !== 0x04034b50) {
+        throw new Error(`Entry XLSX non valida: ${name}`);
+      }
+      const nameLength = readUInt16LE(bytes, local + 26);
+      const extraLength = readUInt16LE(bytes, local + 28);
+      const dataStart = local + 30 + nameLength + extraLength;
+      const compressed = bytes.slice(dataStart, dataStart + entry.compressedSize);
+      return new TextDecoder("utf-8").decode(await inflateZipEntryBrowser(compressed, entry.method));
+    }
+
+    function parseXlsxSharedStrings(xml) {
+      if (!xml) return [];
+      const strings = [];
+      const siRegex = /<[^:>]*:?si\b[^>]*>([\s\S]*?)<\/[^:>]*:?si>/g;
+      let match;
+      while ((match = siRegex.exec(xml))) {
+        const parts = [];
+        match[1].replace(/<[^:>]*:?t\b[^>]*>([\s\S]*?)<\/[^:>]*:?t>/g, (_, text) => {
+          parts.push(xlsxXmlDecode(text));
+          return "";
+        });
+        strings.push(parts.join(""));
+      }
+      return strings;
+    }
+
+    function parseXlsxSheetRows(xml, sharedStrings) {
+      const rows = [];
+      const rowRegex = /<[^:>]*:?row\b[^>]*>([\s\S]*?)<\/[^:>]*:?row>/g;
+      let rowMatch;
+      while ((rowMatch = rowRegex.exec(xml))) {
+        const row = [];
+        let nextIndex = 0;
+        const cellRegex = /<[^:>]*:?c\b([^>]*)>([\s\S]*?)<\/[^:>]*:?c>/g;
+        let cellMatch;
+        while ((cellMatch = cellRegex.exec(rowMatch[1]))) {
+          const cellAttrs = xlsxAttrs(cellMatch[1]);
+          let index = xlsxColumnIndex(cellAttrs.r);
+          if (index < 0) index = nextIndex;
+          const valueMatch = cellMatch[2].match(/<[^:>]*:?v\b[^>]*>([\s\S]*?)<\/[^:>]*:?v>/);
+          const inlineMatches = [...cellMatch[2].matchAll(/<[^:>]*:?t\b[^>]*>([\s\S]*?)<\/[^:>]*:?t>/g)];
+          let value = "";
+          if (cellAttrs.t === "inlineStr") {
+            value = inlineMatches.map(item => xlsxXmlDecode(item[1])).join("");
+          } else if (valueMatch) {
+            value = xlsxXmlDecode(valueMatch[1]);
+            if (cellAttrs.t === "s") value = sharedStrings[Number(value)] || "";
+          }
+          row[index] = value;
+          nextIndex = index + 1;
+        }
+        if (row.some(value => String(value || "").trim())) {
+          rows.push(row.map(value => value ?? ""));
+        }
+      }
+      return rows;
+    }
+
+    async function firstWorksheetPathBrowser(bytes, entries) {
+      const workbook = await readZipTextBrowser(bytes, entries, "xl/workbook.xml");
+      const rels = await readZipTextBrowser(bytes, entries, "xl/_rels/workbook.xml.rels");
+      const sheetMatch = workbook.match(/<[^:>]*:?sheet\b[^>]*r:id="([^"]+)"/);
+      if (!sheetMatch) return "xl/worksheets/sheet1.xml";
+      const relId = sheetMatch[1];
+      const relRegex = /<Relationship\b([^>]*)\/?>/g;
+      let relMatch;
+      while ((relMatch = relRegex.exec(rels))) {
+        const relAttrs = xlsxAttrs(relMatch[1]);
+        if (relAttrs.Id === relId) {
+          const target = String(relAttrs.Target || "").replace(/^\/+/, "");
+          return target.startsWith("xl/") ? target : `xl/${target}`;
+        }
+      }
+      return "xl/worksheets/sheet1.xml";
+    }
+
+    async function readXlsxRowsInBrowser(buffer) {
+      const bytes = new Uint8Array(buffer);
+      if (bytes.length < 4 || bytes[0] !== 0x50 || bytes[1] !== 0x4b) {
+        throw new Error("File XLSX non valido.");
+      }
+      const entries = findZipEntriesBrowser(bytes);
+      const sharedStrings = parseXlsxSharedStrings(await readZipTextBrowser(bytes, entries, "xl/sharedStrings.xml"));
+      const sheetPath = await firstWorksheetPathBrowser(bytes, entries);
+      const sheetXml = await readZipTextBrowser(bytes, entries, sheetPath);
+      return { sheetPath, rows: parseXlsxSheetRows(sheetXml, sharedStrings) };
+    }
+
+    async function parseSpreadsheetInBrowser(file, buffer) {
+      const { sheetPath, rows } = await readXlsxRowsInBrowser(buffer);
+      const csv = spreadsheetRowsToCsv(rows);
+      return {
+        sheetPath,
+        csv,
+        rowCount: csvRowsForMerge(csv).length,
+        detected: "xlsx_browser"
+      };
+    }
+
+    function punRowsToCsv(rows, zone) {
+      if (!rows.length) return { csv: "", rowCount: 0, average: 0, zones: [], detected: "empty" };
+      const header = rows[0].map(value => String(value || "").trim());
+      const zones = header.slice(2).filter(Boolean);
+      const dateIndex = header.findIndex(value => normalizeZoneLabel(value) === "data");
+      const hourIndex = header.findIndex(value => normalizeZoneLabel(value) === "ora");
+      const requestedZone = normalizeZoneLabel(zone);
+      const zoneIndex = header.findIndex(value => normalizeZoneLabel(value) === requestedZone);
+      if (dateIndex < 0 || hourIndex < 0 || zoneIndex < 0) {
+        throw new Error(`Zona PUN non trovata: ${zone || ""}. Zone disponibili: ${zones.join(", ")}`);
+      }
+
+      let total = 0;
+      let count = 0;
+      const lines = [];
+      for (const row of rows.slice(1)) {
+        const date = spreadsheetDate(row[dateIndex]);
+        const hour = parseHour(row[hourIndex]);
+        const normalizedHour = Number.isFinite(hour) && hour >= 1 && hour <= 24 ? hour - 1 : hour;
+        const price = parseNumber(row[zoneIndex]);
+        if (!date || !Number.isFinite(normalizedHour) || !Number.isFinite(price)) continue;
+        total += price;
+        count += 1;
+        lines.push(`${date};${normalizedHour};${price}`);
+      }
+      return {
+        csv: lines.join("\n"),
+        rowCount: lines.length,
+        average: count ? total / count : 0,
+        zones,
+        detected: `pun_xlsx_browser_${zone}`
+      };
+    }
+
+    async function parsePunSpreadsheetInBrowser(file, buffer) {
+      const { sheetPath, rows } = await readXlsxRowsInBrowser(buffer);
+      return {
+        sheetPath,
+        ...punRowsToCsv(rows, document.getElementById("zone").value)
+      };
+    }
+
+    async function parseSpreadsheetWithApi(endpoint, payload, errorLabel) {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+        body: JSON.stringify(payload)
+      });
+      const text = await response.text();
+      let parsed = {};
+      try {
+        parsed = text ? JSON.parse(text) : {};
+      } catch (error) {
+        throw new Error(`${errorLabel}: risposta server non valida.`);
+      }
+      if (!response.ok || parsed.error) {
+        throw new Error(parsed.detail || parsed.error || errorLabel);
+      }
+      return parsed;
+    }
+
+    async function readSpreadsheetAsCsv(file) {
+      const buffer = await file.arrayBuffer();
+      try {
+        return await parseSpreadsheetInBrowser(file, buffer);
+      } catch (browserError) {
+        return parseSpreadsheetWithApi("/api/parse-xlsx", {
           filename: file.name,
           base64: arrayBufferToBase64(buffer)
-        })
-      });
-      const payload = await response.json();
-      if (!response.ok || payload.error) {
-        throw new Error(payload.detail || payload.error || "Errore lettura Excel");
+        }, browserError.message || "Errore lettura Excel");
       }
-      return payload;
     }
 
     async function readPunXlsxAsCsv(file) {
       const buffer = await file.arrayBuffer();
-      const response = await fetch("/api/parse-pun-xlsx", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      try {
+        return await parsePunSpreadsheetInBrowser(file, buffer);
+      } catch (browserError) {
+        return parseSpreadsheetWithApi("/api/parse-pun-xlsx", {
           filename: file.name,
           zone: document.getElementById("zone").value,
           base64: arrayBufferToBase64(buffer)
-        })
-      });
-      const payload = await response.json();
-      if (!response.ok || payload.error) {
-        throw new Error(payload.detail || payload.error || "Errore lettura PUN");
+        }, browserError.message || "Errore lettura PUN");
       }
-      return payload;
     }
 
     function readTextFile(file) {
