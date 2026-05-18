@@ -1589,7 +1589,6 @@
     }
 
     function pvgisAnnualProduction() {
-      if (state.pvgisAnnualKwh > 0) return state.pvgisAnnualKwh;
       return [...state.pvgisMap.values()]
         .filter(Number.isFinite)
         .reduce((sum, value) => sum + value, 0);
@@ -1732,16 +1731,10 @@
 
         state.pvgisMap = map;
         state.pvgisLoaded = map.size > 0;
-        state.pvgisAnnualKwh = 0;
-        try {
-          const performancePayload = await fetchPvgisJson(params, "PVcalc");
-          state.pvgisAnnualKwh = findAnnualPvOutput(performancePayload);
-        } catch (performanceError) {
-          state.pvgisAnnualKwh = 0;
-        }
+        state.pvgisAnnualKwh = pvgisAnnualProduction();
         const annualPvgisKwh = pvgisAnnualProduction();
         status.textContent = state.pvgisLoaded
-          ? `${pvModelLabel(model)} caricato: ${map.size.toLocaleString("it-IT")} ore, produzione annua ${annualPvgisKwh.toLocaleString("it-IT", { maximumFractionDigits: 1 })} kWh.`
+          ? `${pvModelLabel(model)} caricato: ${map.size.toLocaleString("it-IT")} ore, produzione annua usata nel calcolo ${annualPvgisKwh.toLocaleString("it-IT", { maximumFractionDigits: 1 })} kWh.`
           : "PVGIS non ha restituito dati orari.";
         markScenarioDirty("Produzione PVGIS caricata: premi Calcola scenario per aggiornare KPI, tabella e report.");
       } catch (error) {
