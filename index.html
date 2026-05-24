@@ -40,10 +40,241 @@
       letter-spacing: 0;
     }
 
+    .app-title-button {
+      border: 0;
+      padding: 0;
+      color: white;
+      background: transparent;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .app-title-button:hover h1,
+    .app-title-button:focus-visible h1 {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .app-title-button:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.9);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
     .subtitle {
       margin-top: 6px;
       color: #c8d7d1;
       font-size: 14px;
+    }
+
+    .app-header-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .auth-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #dbe7e2;
+      font-size: 13px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    .ghost-action {
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 6px;
+      padding: 8px 11px;
+      color: white;
+      background: transparent;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .ghost-action:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .auth-screen {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      background:
+        linear-gradient(135deg, rgba(15, 118, 110, 0.12), rgba(47, 93, 140, 0.1)),
+        var(--bg);
+    }
+
+    .auth-card {
+      width: min(920px, 100%);
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 0;
+      overflow: hidden;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+      box-shadow: 0 18px 42px rgba(17, 35, 31, 0.16);
+    }
+
+    .auth-intro {
+      padding: 34px;
+      background: #11231f;
+      color: white;
+    }
+
+    .auth-intro h1 {
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .auth-intro p {
+      margin: 12px 0 0;
+      color: #c8d7d1;
+      line-height: 1.5;
+    }
+
+    .auth-panel {
+      padding: 28px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .auth-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .auth-toggle button {
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      padding: 10px 12px;
+      color: var(--accent);
+      background: white;
+      font: inherit;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .auth-toggle button.active {
+      color: white;
+      background: var(--accent);
+    }
+
+    .auth-form {
+      display: grid;
+      gap: 10px;
+    }
+
+    .auth-form h2 {
+      margin: 2px 0 4px;
+      font-size: 18px;
+    }
+
+    .auth-form .action {
+      margin-top: 2px;
+    }
+
+    .auth-status {
+      min-height: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .auth-status.error {
+      color: #b91c1c;
+    }
+
+    .auth-status.success {
+      color: var(--accent);
+    }
+
+    .mode-screen {
+      min-height: 100vh;
+      padding: 28px;
+      background: var(--bg);
+    }
+
+    .mode-shell {
+      width: min(1040px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    .mode-hero {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 24px 28px;
+      border-radius: 10px;
+      background: #11231f;
+      color: white;
+    }
+
+    .mode-hero h1 {
+      font-size: 26px;
+    }
+
+    .mode-hero p {
+      margin: 8px 0 0;
+      color: #c8d7d1;
+      line-height: 1.45;
+    }
+
+    .mode-panel {
+      display: grid;
+      gap: 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--panel);
+    }
+
+    .mode-select-row {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.85fr) auto;
+      gap: 12px;
+      align-items: end;
+    }
+
+    .mode-guide {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .mode-card {
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fbfcfa;
+    }
+
+    .mode-card.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.12);
+    }
+
+    .mode-card h2 {
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    .mode-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
     }
 
     main {
@@ -58,6 +289,10 @@
       grid-template-columns: 360px 1fr;
       gap: 18px;
       align-items: start;
+    }
+
+    .settings-wizard-active .grid {
+      grid-template-columns: minmax(420px, 720px) 1fr;
     }
 
     section {
@@ -128,6 +363,89 @@
       padding-top: 2px;
     }
 
+    .settings-wizard {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f6faf7;
+      padding: 12px;
+    }
+
+    .wizard-step-text {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .wizard-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .wizard-pill {
+      border: 1px solid #cbd5c6;
+      border-radius: 999px;
+      padding: 6px 8px;
+      color: var(--muted);
+      background: white;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    button.wizard-pill {
+      font: inherit;
+      min-height: 0;
+    }
+
+    .wizard-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .wizard-pill:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .wizard-pill.active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: white;
+    }
+
+    .wizard-pill.done {
+      border-color: #94a3b8;
+      color: var(--ink);
+    }
+
+    .wizard-hint {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .wizard-step-hidden {
+      display: none;
+    }
+
+    .wizard-control-hidden {
+      display: none !important;
+    }
+
+    .wizard-actions {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .action.secondary {
+      background: white;
+      color: var(--accent);
+    }
+
     .field {
       display: grid;
       gap: 6px;
@@ -138,6 +456,13 @@
       color: var(--muted);
       font-size: 13px;
       font-weight: 600;
+    }
+
+    .field-tip {
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
     }
 
     input, select, textarea {
@@ -204,6 +529,16 @@
       font-weight: 650;
       cursor: pointer;
       white-space: nowrap;
+    }
+
+    .mini-action.secondary {
+      background: white;
+      color: var(--accent);
+    }
+
+    .file-actions {
+      display: grid;
+      gap: 6px;
     }
 
     .split {
@@ -309,11 +644,21 @@
     .hidden { display: none; }
 
     @media (max-width: 900px) {
+      .auth-card { grid-template-columns: 1fr; }
+      .mode-select-row,
+      .mode-guide { grid-template-columns: 1fr; }
       .grid { grid-template-columns: 1fr; }
       .results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 560px) {
+      .auth-screen { padding: 14px; }
+      .mode-screen { padding: 14px; }
+      .mode-hero { flex-direction: column; padding: 20px; }
+      .mode-panel { padding: 16px; }
+      .auth-intro, .auth-panel { padding: 20px; }
+      .auth-toggle { grid-template-columns: 1fr; }
+      .app-header-row, .auth-user { align-items: flex-start; flex-direction: column; }
       main { padding: 14px; }
       .results { grid-template-columns: 1fr; }
       .split { grid-template-columns: 1fr; }
@@ -324,9 +669,125 @@
   </style>
 </head>
 <body>
+  <div id="authScreen" class="auth-screen">
+    <section class="auth-card">
+      <div class="auth-intro">
+        <h1>Accesso Simulatore FV + BESS</h1>
+        <p>Accedi con OTP via email oppure registra un nuovo profilo per usare il simulatore e generare i report KPI.</p>
+      </div>
+      <div class="auth-panel">
+        <div class="auth-toggle">
+          <button type="button" id="showLoginBtn" class="active">Accedi</button>
+          <button type="button" id="showRegisterBtn">Registrati</button>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <h2>Login</h2>
+          <div class="field">
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" autocomplete="email" placeholder="nome@azienda.it">
+          </div>
+          <button type="button" class="action" id="sendLoginOtp">Invia OTP di accesso</button>
+          <div class="field">
+            <label for="loginOtp">OTP ricevuto via email</label>
+            <input id="loginOtp" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000">
+          </div>
+          <button type="button" class="action" id="verifyLoginOtp">Accedi</button>
+          <div id="loginStatus" class="auth-status"></div>
+        </form>
+
+        <form id="registerForm" class="auth-form hidden">
+          <h2>Registrazione</h2>
+          <div class="split">
+            <div class="field">
+              <label for="registerName">Nome</label>
+              <input id="registerName" type="text" autocomplete="given-name">
+            </div>
+            <div class="field">
+              <label for="registerSurname">Cognome</label>
+              <input id="registerSurname" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field">
+            <label for="registerEmail">Email</label>
+            <input id="registerEmail" type="email" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="registerPhone">Telefono</label>
+            <input id="registerPhone" type="tel" autocomplete="tel">
+          </div>
+          <button type="button" class="action" id="sendRegisterOtp">Invia OTP di convalida</button>
+          <div class="field">
+            <label for="registerOtp">OTP ricevuto via email</label>
+            <input id="registerOtp" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000">
+          </div>
+          <button type="button" class="action" id="verifyRegisterOtp">Convalida iscrizione</button>
+          <div id="registerStatus" class="auth-status"></div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <div id="modeScreen" class="mode-screen hidden">
+    <div class="mode-shell">
+      <div class="mode-hero">
+        <div>
+          <h1>Che sistema vuoi impostare?</h1>
+          <p>Scegli la modalità più vicina al caso del cliente. Il simulatore aprirà solo i parametri utili per quella direzione di analisi.</p>
+        </div>
+        <button type="button" id="modeLogoutBtn" class="ghost-action">Esci</button>
+      </div>
+
+      <section class="mode-panel">
+        <div class="mode-select-row">
+          <div class="field">
+            <label for="initialBessMode">Modalità operativa</label>
+            <select id="initialBessMode">
+              <option value="ci">C&I industriale - massimizza autoconsumo</option>
+              <option value="hybrid">Ibrido FV + BESS - vendita nelle ore migliori</option>
+              <option value="arbitrage">Arbitraggio PUN - compra basso e vende alto</option>
+              <option value="bill">Da bollette F1-F2-F3 - analisi mensile</option>
+            </select>
+          </div>
+          <button type="button" class="action" id="confirmModeBtn">Continua</button>
+        </div>
+
+        <div class="mode-guide">
+          <article class="mode-card" data-mode-card="ci">
+            <h2>C&I industriale</h2>
+            <p>Usala quando il cliente ha consumi orari di stabilimento. Il FV copre prima i carichi, il surplus carica il BESS e la batteria scarica per ridurre il prelievo da rete.</p>
+          </article>
+          <article class="mode-card" data-mode-card="hybrid">
+            <h2>Ibrido FV + BESS</h2>
+            <p>Usala quando l'impianto lavora come generazione FV con accumulo. Il BESS sposta l'energia FV verso le ore PUN più remunerative e può integrare cicli da rete se previsto.</p>
+          </article>
+          <article class="mode-card" data-mode-card="arbitrage">
+            <h2>Arbitraggio PUN</h2>
+            <p>Usala per un BESS stand-alone collegato alla rete. Il sistema compra energia nelle ore a prezzo basso e la vende nelle ore a prezzo alto rispettando potenza, SOC e rendimenti.</p>
+          </article>
+          <article class="mode-card" data-mode-card="bill">
+            <h2>Da bollette F1-F2-F3</h2>
+            <p>Usala quando non ci sono curve orarie ma solo prospetti mensili per fascia. Il simulatore stima il potenziale BESS partendo da energia prelevata e immessa in F1, F2 e F3.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div id="appShell" class="app-shell hidden">
   <header>
-    <h1>Simulatore FV + BESS</h1>
-    <div class="subtitle">Prototipo operativo per definire input, flusso dati e risultati prima dell'eseguibile Python</div>
+    <div class="app-header-row">
+      <div>
+        <button type="button" id="titleBackToMode" class="app-title-button" title="Torna alla selezione funzione sistema">
+          <h1>Simulatore FV + BESS</h1>
+        </button>
+        <div class="subtitle">Prototipo operativo per definire input, flusso dati e risultati prima dell'eseguibile Python</div>
+      </div>
+      <div class="auth-user">
+        <span id="authUserLabel"></span>
+        <button type="button" id="logoutBtn" class="ghost-action">Esci</button>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -334,7 +795,13 @@
       <section class="params-panel">
         <h2 class="params-title">Parametri</h2>
 
-        <details class="param-menu">
+        <div class="settings-wizard hidden" id="settingsWizard">
+          <p class="wizard-step-text" id="wizardStepText">Step impostazioni</p>
+          <div class="wizard-steps" id="wizardSteps"></div>
+          <p class="wizard-hint" id="wizardHint">Compila questa sezione e premi Continua.</p>
+        </div>
+
+        <details class="param-menu" id="paramSystemMenu">
           <summary>Sistema da impostare</summary>
           <div class="param-menu-body">
             <div class="field">
@@ -343,7 +810,117 @@
                 <option value="ci">C&I - massimizza autoconsumo</option>
                 <option value="hybrid">Ibrido - FV su ore remunerative</option>
                 <option value="arbitrage">Arbitraggio PUN</option>
+                <option value="bill">Da bollette F1-F2-F3</option>
               </select>
+            </div>
+          </div>
+        </details>
+
+        <details class="param-menu" id="paramDataMenu">
+          <summary>Dati cliente</summary>
+          <div class="param-menu-body">
+            <div id="customerDataInputs">
+              <h2 id="customerDataTitle">Dati Cliente Orari</h2>
+
+              <div class="field" id="consumptionFileField">
+                <label for="consumptionFile">File consumi azienda [CSV/XLSX/XLS]</label>
+                <div class="input-action">
+                  <input id="consumptionFile" type="file" accept=".csv,.txt,.xlsx,.xls" multiple>
+                  <div class="file-actions">
+                    <button class="mini-action" type="button" id="downloadConsumptionTemplate">Scarica esempio</button>
+                    <button class="mini-action secondary" type="button" id="clearConsumptionData">Cancella dati</button>
+                  </div>
+                </div>
+              </div>
+              <div class="status" id="fileStatus">
+                Puoi caricare uno o piu file CSV, XLSX o XLS. I file aggregati a 15 minuti vengono sommati a ore.
+              </div>
+
+              <div class="field" id="dataField">
+                <label for="data">CSV consumi: data; ora; prelievo rete; PUN opzionale</label>
+                <textarea id="data">01/01/2025;0;0</textarea>
+              </div>
+
+              <div class="field">
+                <label for="pvFile" id="pvFileLabel">File energia FV immessa [CSV/XLSX/XLS]</label>
+                <div class="input-action">
+                  <input id="pvFile" type="file" accept=".csv,.txt,.xlsx,.xls" multiple>
+                  <div class="file-actions">
+                    <button class="mini-action" type="button" id="downloadPvTemplate">Scarica esempio</button>
+                    <button class="mini-action secondary" type="button" id="clearPvData">Cancella dati</button>
+                  </div>
+                </div>
+              </div>
+              <div class="status" id="pvFileStatus">
+                FV immessa impostata a zero. Carica un file solo se il cliente ha gia energia FV immessa.
+              </div>
+
+              <div class="field">
+                <label for="pvData" id="pvDataLabel">CSV FV immessa: data; ora; immessa FV</label>
+                <textarea id="pvData">01/01/2025;0;0</textarea>
+              </div>
+
+              <button class="action" type="button" id="loadDataPreview">Carica dati</button>
+            </div>
+
+            <div id="billDataInputs" class="hidden">
+              <h2>Dati Bollette F1-F2-F3</h2>
+
+              <div class="field">
+                <label for="billFile">File bollette energia [CSV/XLSX/XLS]</label>
+                <div class="input-action">
+                  <input id="billFile" type="file" accept=".csv,.txt,.xlsx,.xls" multiple>
+                  <div class="file-actions">
+                    <button class="mini-action" type="button" id="downloadBillTemplate">Scarica modello</button>
+                    <button class="mini-action secondary" type="button" id="clearBillData">Cancella dati</button>
+                  </div>
+                </div>
+              </div>
+              <div class="status" id="billFileStatus">
+                Carica uno o piu file con righe mensili, prelievi F1/F2/F3, energia immessa e produzione FV. Se il file ha solo l'immessa totale, viene caricata in F1.
+              </div>
+
+              <div class="field">
+                <label for="billData">CSV bollette: mese; F1 immessa; F2 immessa; F3 immessa; F1 prelevata; F2 prelevata; F3 prelevata; produzione FV</label>
+                <textarea id="billData">mese;F1 immessa;F2 immessa;F3 immessa;F1 prelevata;F2 prelevata;F3 prelevata;produzione FV
+01/01/2025;0;0;0;0;0;0;0</textarea>
+              </div>
+
+              <button class="action" type="button" id="loadBillDataPreview">Carica dati</button>
+
+              <div class="split">
+                <div class="field">
+                  <label for="billBuyF1">Prezzo acquisto F1 [euro/kWh]</label>
+                  <input id="billBuyF1" type="number" value="0.25" min="0" step="0.001">
+                </div>
+                <div class="field">
+                  <label for="billSellF1">Valore immessa F1 [euro/kWh]</label>
+                  <input id="billSellF1" type="number" value="0.10" min="0" step="0.001">
+                </div>
+              </div>
+              <div class="split">
+                <div class="field">
+                  <label for="billBuyF2">Prezzo acquisto F2 [euro/kWh]</label>
+                  <input id="billBuyF2" type="number" value="0.22" min="0" step="0.001">
+                </div>
+                <div class="field">
+                  <label for="billSellF2">Valore immessa F2 [euro/kWh]</label>
+                  <input id="billSellF2" type="number" value="0.10" min="0" step="0.001">
+                </div>
+              </div>
+              <div class="split">
+                <div class="field">
+                  <label for="billBuyF3">Prezzo acquisto F3 [euro/kWh]</label>
+                  <input id="billBuyF3" type="number" value="0.20" min="0" step="0.001">
+                </div>
+                <div class="field">
+                  <label for="billSellF3">Valore immessa F3 [euro/kWh]</label>
+                  <input id="billSellF3" type="number" value="0.10" min="0" step="0.001">
+                </div>
+              </div>
+              <div class="status">
+                Il motore mensile sposta energia immessa verso il prelievo: carica dalle fasce con minor valore di cessione e scarica sulle fasce con maggior costo di acquisto.
+              </div>
             </div>
           </div>
         </details>
@@ -493,17 +1070,17 @@
           </div>
         </details>
 
-        <details class="param-menu">
+        <details class="param-menu" id="paramBessMenu">
           <summary>Impostazione BESS</summary>
           <div class="param-menu-body">
             <div class="field">
               <label for="smartEProduct">Tipologia prodotto BESS</label>
               <select id="smartEProduct">
                 <option value="custom" selected>Configurazione manuale</option>
-                <option value="powerplant260">PowerPLANT 260E PLUS</option>
-                <option value="powerplant230">PowerPLANT H230 PLUS</option>
-                <option value="desay5mwh">Desay Vita 5MWh + Hopewind</option>
-                <option value="tb313">TB 3.13MWh + PCS 1.5MW</option>
+                <option value="powerplant260">X-CI 261/125</option>
+                <option value="powerplant230">X-CI 233/100</option>
+                <option value="desay5mwh">X-GRID 5 skid 2,5MW</option>
+                <option value="tb313">X-GRID 3 MWh - 1,5MW</option>
                 <option value="xci417">X-CI 417kWh + PCS Esterno</option>
               </select>
             </div>
@@ -535,22 +1112,22 @@
 
             <div class="split">
               <div class="field">
-                <label for="socMinPct">SOC minimo [%]</label>
+                <label for="socMinPct">SOC minimo [%] <span class="field-tip">consigliato 10%</span></label>
                 <input id="socMinPct" type="number" value="10" min="0" max="100" step="1">
               </div>
               <div class="field">
-                <label for="socInitialPct">SOC iniziale [%]</label>
+                <label for="socInitialPct">SOC iniziale [%] <span class="field-tip">consigliato 50%</span></label>
                 <input id="socInitialPct" type="number" value="100" min="0" max="100" step="1">
               </div>
             </div>
 
             <div class="split">
               <div class="field">
-                <label for="etaCharge">Efficienza carica [%]</label>
+                <label for="etaCharge">Efficienza carica [%] <span class="field-tip">consigliato 95%</span></label>
                 <input id="etaCharge" type="number" value="95" min="1" max="100" step="0.1">
               </div>
               <div class="field">
-                <label for="etaDischarge">Efficienza scarica [%]</label>
+                <label for="etaDischarge">Efficienza scarica [%] <span class="field-tip">consigliato 95%</span></label>
                 <input id="etaDischarge" type="number" value="95" min="1" max="100" step="0.1">
               </div>
             </div>
@@ -583,7 +1160,7 @@
           </div>
         </details>
 
-        <details class="param-menu">
+        <details class="param-menu" id="paramGridMenu">
           <summary>Parametri rete</summary>
           <div class="param-menu-body">
             <div class="split">
@@ -599,7 +1176,7 @@
           </div>
         </details>
 
-        <details class="param-menu">
+        <details class="param-menu" id="paramPriceMenu">
           <summary>Prezzo energia</summary>
           <div class="param-menu-body">
             <div class="segmented">
@@ -630,14 +1207,16 @@
                 <label for="punAverage">Media PUN zona selezionata [euro/MWh]</label>
                 <input id="punAverage" type="number" value="116.06" step="0.01">
               </div>
-              <div class="field hidden">
+              <div class="field">
                 <label for="punFile">File PUN zonale [XLSX]</label>
                 <input id="punFile" type="file" accept=".xlsx">
+                <small>Per aggiornamento manuale: scarica da GME il file XLSX Prezzi Zonali/MGP e caricalo qui.</small>
               </div>
               <div class="status" id="punFileStatus">
                 Database PUN 2025 integrato: scegli la zona e il simulatore carica i prezzi orari.
               </div>
-              <button class="action" type="button" id="refreshGmePun">Aggiorna PUN da GME</button>
+              <button class="action" type="button" id="refreshGmePun">Aggiorna automatico GME (API)</button>
+              <button class="action secondary" type="button" id="openGmeManual">Apri pagina GME per download manuale</button>
               <div class="split" id="punCostAdders">
                 <div class="field">
                   <label for="energySpread">Spread energia [euro/kWh]</label>
@@ -673,10 +1252,13 @@
         </details>
 
         <div class="param-actions">
+          <button class="action secondary wizard-control-hidden" type="button" id="wizardBack">Indietro</button>
+          <button class="action wizard-control-hidden" type="button" id="wizardNext">Continua</button>
           <button class="action" type="button" id="calc">Calcola scenario</button>
           <button class="action" type="button" id="loadCompleteDemo">Carica demo completa</button>
           <button class="action" type="button" id="openReport">Apri report KPI</button>
           <button class="action" type="button" id="exportOfficial">Esporta prova ufficiale</button>
+          <button class="action secondary" type="button" id="backToModeSelection">Torna alla selezione modello</button>
         </div>
         <div class="status" id="calcStatus">
           Modifica i parametri e premi Calcola scenario per aggiornare KPI e anteprima oraria.
@@ -684,36 +1266,6 @@
       </section>
 
       <section>
-        <div id="customerDataInputs">
-        <h2 id="customerDataTitle">Dati Cliente Orari</h2>
-
-        <div class="field" id="consumptionFileField">
-          <label for="consumptionFile">File consumi azienda [CSV/XLSX/XLS]</label>
-          <input id="consumptionFile" type="file" accept=".csv,.txt,.xlsx,.xls" multiple>
-        </div>
-        <div class="status" id="fileStatus">
-          Puoi caricare uno o piu file CSV, XLSX o XLS. I file aggregati a 15 minuti vengono sommati a ore.
-        </div>
-
-        <div class="field" id="dataField">
-          <label for="data">CSV consumi: data; ora; prelievo rete; PUN opzionale</label>
-          <textarea id="data">01/01/2025;0;0</textarea>
-        </div>
-
-        <div class="field">
-          <label for="pvFile" id="pvFileLabel">File energia FV immessa [CSV/XLSX/XLS]</label>
-          <input id="pvFile" type="file" accept=".csv,.txt,.xlsx,.xls" multiple>
-        </div>
-        <div class="status" id="pvFileStatus">
-          FV immessa impostata a zero. Carica un file solo se il cliente ha gia energia FV immessa.
-        </div>
-
-        <div class="field">
-          <label for="pvData" id="pvDataLabel">CSV FV immessa: data; ora; immessa FV</label>
-          <textarea id="pvData">01/01/2025;0;0</textarea>
-        </div>
-        </div>
-
         <h2>Dati Aggregati Energia</h2>
         <div class="results">
           <div class="metric">
@@ -855,6 +1407,7 @@
       </section>
     </div>
   </main>
+  </div>
 
   <script>
     const state = {
@@ -870,13 +1423,29 @@
       lastRows: [],
       lastSummary: {},
       demoInputOverride: null,
-      lastAnnualWindowInfo: null
+      lastAnnualWindowInfo: null,
+      openReportAfterCalculate: false,
+      settingsWizard: {
+        active: false,
+        mode: "ci",
+        stepIndex: 0
+      }
+    };
+    const AUTH_USER_KEY = "smartE_bess_auth_user";
+    const AUTH_USERS_KEY = "smartE_bess_auth_users";
+    const MODE_READY_KEY = "smartE_bess_mode_ready";
+    const SELECTED_MODE_KEY = "smartE_bess_selected_mode";
+    const PUN_MANUAL_DB_KEY = "smartE_bess_manual_pun_db";
+    const authState = {
+      panel: "login",
+      registerChallenge: null,
+      loginChallenge: null
     };
     const ANNUAL_HOUR_LIMIT = 8760;
     const smartEProducts = {
       custom: null,
       powerplant260: {
-        name: "PowerPLANT 260E PLUS",
+        name: "X-CI 261/125",
         solution: "Cabinet outdoor",
         capacityKwh: 261,
         powerKw: 125,
@@ -886,9 +1455,9 @@
         maxUnits: 8
       },
       powerplant230: {
-        name: "PowerPLANT H230 PLUS",
+        name: "X-CI 233/100",
         solution: "Cabinet outdoor",
-        capacityKwh: 232,
+        capacityKwh: 233,
         powerKw: 100,
         rtePct: 90,
         dodPct: 90,
@@ -896,17 +1465,18 @@
         maxUnits: 8
       },
       desay5mwh: {
-        name: "Desay Vita 5MWh + Hopewind",
+        name: "X-GRID 5 skid 2,5MW",
         solution: "Container 20FT + PCS/Trafo",
         capacityKwh: 5000,
         powerKw: 2500,
         rtePct: 94,
         dodPct: 95,
-        priceEuroKwh: 120,
+        priceEuroKwh: 160,
+        fixedInvestmentEuro: 800000,
         maxUnits: null
       },
       tb313: {
-        name: "TB 3.13MWh + PCS 1.5MW",
+        name: "X-GRID 3 MWh - 1,5MW",
         solution: "Container 20HQ",
         capacityKwh: 3130,
         powerKw: 1500,
@@ -984,6 +1554,430 @@
       }) + "/kWh";
     }
 
+    function normalizeEmail(value) {
+      return String(value || "").trim().toLowerCase();
+    }
+
+    function localUsers() {
+      try {
+        return JSON.parse(localStorage.getItem(AUTH_USERS_KEY) || "{}");
+      } catch {
+        return {};
+      }
+    }
+
+    function saveLocalUsers(users) {
+      localStorage.setItem(AUTH_USERS_KEY, JSON.stringify(users || {}));
+    }
+
+    function currentAuthUser() {
+      try {
+        return JSON.parse(localStorage.getItem(AUTH_USER_KEY) || "null");
+      } catch {
+        return null;
+      }
+    }
+
+    function setAuthStatus(id, message, tone = "") {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.textContent = message;
+      el.classList.toggle("error", tone === "error");
+      el.classList.toggle("success", tone === "success");
+    }
+
+    function generateLocalOtp() {
+      return String(Math.floor(100000 + Math.random() * 900000));
+    }
+
+    async function authApi(path, payload) {
+      const response = await fetch(path, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload || {})
+      });
+      const json = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(json.error || json.detail || `HTTP ${response.status}`);
+      }
+      return json;
+    }
+
+    function showAuthPanel(panel) {
+      const isLogin = panel === "login";
+      authState.panel = panel;
+      document.getElementById("loginForm").classList.toggle("hidden", !isLogin);
+      document.getElementById("registerForm").classList.toggle("hidden", isLogin);
+      document.getElementById("showLoginBtn").classList.toggle("active", isLogin);
+      document.getElementById("showRegisterBtn").classList.toggle("active", !isLogin);
+    }
+
+    function enterApp(user) {
+      localStorage.setItem(AUTH_USER_KEY, JSON.stringify(user));
+      sessionStorage.removeItem(MODE_READY_KEY);
+      updateAuthView();
+    }
+
+    function updateAuthView() {
+      const user = currentAuthUser();
+      const isLogged = !!user?.email;
+      const modeReady = sessionStorage.getItem(MODE_READY_KEY) === "1";
+      document.getElementById("authScreen").classList.toggle("hidden", isLogged);
+      document.getElementById("modeScreen").classList.toggle("hidden", !isLogged || modeReady);
+      document.getElementById("appShell").classList.toggle("hidden", !isLogged || !modeReady);
+      if (isLogged) {
+        document.getElementById("authUserLabel").textContent = `${user.name || user.email} ${user.surname || ""}`.trim();
+        const selectedMode = localStorage.getItem(SELECTED_MODE_KEY) || document.getElementById("bessMode").value || "ci";
+        document.getElementById("initialBessMode").value = selectedMode;
+        updateModeGuide();
+      }
+    }
+
+    function modeLabel(value) {
+      const labels = {
+        ci: "C&I industriale",
+        hybrid: "Ibrido FV + BESS",
+        arbitrage: "Arbitraggio PUN",
+        bill: "Da bollette F1-F2-F3"
+      };
+      return labels[value] || labels.ci;
+    }
+
+    function updateModeGuide() {
+      const mode = document.getElementById("initialBessMode").value;
+      document.querySelectorAll("[data-mode-card]").forEach(card => {
+        card.classList.toggle("active", card.dataset.modeCard === mode);
+      });
+    }
+
+    const PARAMETER_WIZARD_STEPS = {
+      data: {
+        menuId: "paramDataMenu",
+        label: "Dati",
+        title: "Dati cliente",
+        hint: "Carica o compila i dati di consumo, immissione o bollette prima di impostare FV e BESS."
+      },
+      fv: {
+        menuId: "fvProductionTitle",
+        label: "FV",
+        title: "Impostazione FV",
+        hint: "Imposta potenza, modello di produzione e costo FV. Poi premi Continua."
+      },
+      bess: {
+        menuId: "paramBessMenu",
+        label: "BESS",
+        title: "Impostazione BESS",
+        hint: "Seleziona prodotto, capacita, potenza, SOC, rendimenti e investimento BESS."
+      },
+      grid: {
+        menuId: "paramGridMenu",
+        label: "Rete",
+        title: "Parametri rete",
+        hint: "Imposta i limiti di prelievo e immissione da rispettare nel calcolo."
+      },
+      price: {
+        menuId: "paramPriceMenu",
+        label: "Prezzo",
+        title: "Prezzo energia",
+        hint: "Imposta prezzo fisso o PUN orario e valorizzazione dell'energia immessa. Poi calcola lo scenario."
+      }
+    };
+
+    function parameterWizardKeysForMode(mode) {
+      if (mode === "arbitrage") return ["bess", "grid", "price"];
+      if (mode === "bill") return ["data", "bess", "price"];
+      return ["data", "fv", "bess", "grid", "price"];
+    }
+
+    function parameterWizardStepsForMode(mode) {
+      return parameterWizardKeysForMode(mode)
+        .map(key => ({ key, ...PARAMETER_WIZARD_STEPS[key] }))
+        .filter(step => {
+          const menu = document.getElementById(step.menuId);
+          return menu && !menu.classList.contains("hidden");
+        });
+    }
+
+    function renderParameterWizard() {
+      const wizard = state.settingsWizard;
+      const wizardBox = document.getElementById("settingsWizard");
+      const stepText = document.getElementById("wizardStepText");
+      const stepList = document.getElementById("wizardSteps");
+      const hint = document.getElementById("wizardHint");
+      const backButton = document.getElementById("wizardBack");
+      const nextButton = document.getElementById("wizardNext");
+      const calcButton = document.getElementById("calc");
+      const secondaryButtons = ["loadCompleteDemo", "openReport", "exportOfficial"];
+
+      document.querySelectorAll(".param-menu").forEach(menu => {
+        menu.classList.remove("wizard-step-hidden");
+      });
+      [backButton, nextButton, calcButton, ...secondaryButtons.map(id => document.getElementById(id))]
+        .filter(Boolean)
+        .forEach(button => button.classList.remove("wizard-control-hidden"));
+
+      calcButton.textContent = "Calcola scenario";
+      document.querySelector(".param-actions")?.classList.remove("wizard-actions");
+
+      if (!wizard.active) {
+        wizardBox.classList.add("hidden");
+        backButton.classList.add("wizard-control-hidden");
+        nextButton.classList.add("wizard-control-hidden");
+        return;
+      }
+
+      const steps = parameterWizardStepsForMode(wizard.mode);
+      wizard.stepIndex = clamp(wizard.stepIndex, 0, Math.max(0, steps.length - 1));
+      const current = steps[wizard.stepIndex];
+      if (!current) return;
+
+      wizardBox.classList.remove("hidden");
+      const currentTitle = current.key === "data"
+        ? (document.querySelector(`#${current.menuId} summary`)?.textContent || current.title)
+        : current.title;
+      const currentHint = current.key === "data" && wizard.mode === "bill"
+        ? "Carica o compila il prospetto bollette F1-F2-F3 prima di impostare il BESS."
+        : current.hint;
+      stepText.textContent = `Step ${wizard.stepIndex + 1} di ${steps.length}: ${currentTitle}`;
+      stepList.innerHTML = steps.map((step, index) => {
+        const cls = index === wizard.stepIndex ? "active" : (index < wizard.stepIndex ? "done" : "");
+        const aria = index === wizard.stepIndex ? " aria-current=\"step\"" : "";
+        return `<button class="wizard-pill ${cls}" type="button" data-wizard-step="${index}"${aria}>${step.label}</button>`;
+      }).join("");
+      hint.textContent = currentHint;
+
+      document.querySelectorAll(".param-menu").forEach(menu => {
+        const isCurrent = menu.id === current.menuId;
+        menu.classList.toggle("wizard-step-hidden", !isCurrent);
+        menu.open = isCurrent;
+      });
+
+      const isFirst = wizard.stepIndex === 0;
+      const isLast = wizard.stepIndex === steps.length - 1;
+      document.querySelector(".param-actions")?.classList.add("wizard-actions");
+      backButton.classList.toggle("wizard-control-hidden", isFirst);
+      nextButton.classList.toggle("wizard-control-hidden", isLast);
+      calcButton.classList.toggle("wizard-control-hidden", !isLast);
+      calcButton.textContent = isLast ? "Calcola scenario e apri report KPI" : "Calcola scenario";
+      secondaryButtons.forEach(id => document.getElementById(id)?.classList.add("wizard-control-hidden"));
+    }
+
+    function startParameterWizard(mode) {
+      state.settingsWizard.active = true;
+      state.settingsWizard.mode = mode;
+      state.settingsWizard.stepIndex = 0;
+      document.getElementById("appShell")?.classList.add("settings-wizard-active");
+      renderParameterWizard();
+      document.querySelector(".params-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function finishParameterWizard() {
+      state.settingsWizard.active = false;
+      document.getElementById("appShell")?.classList.remove("settings-wizard-active");
+      renderParameterWizard();
+      updateBessModeControls({ skipCalculate: true });
+    }
+
+    function moveParameterWizard(delta) {
+      if (!state.settingsWizard.active) return;
+      const steps = parameterWizardStepsForMode(state.settingsWizard.mode);
+      state.settingsWizard.stepIndex = clamp(state.settingsWizard.stepIndex + delta, 0, Math.max(0, steps.length - 1));
+      renderParameterWizard();
+      document.querySelector(".params-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function goToParameterWizardStep(stepIndex) {
+      if (!state.settingsWizard.active) return;
+      const steps = parameterWizardStepsForMode(state.settingsWizard.mode);
+      state.settingsWizard.stepIndex = clamp(Number(stepIndex), 0, Math.max(0, steps.length - 1));
+      renderParameterWizard();
+      document.querySelector(".params-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function isParameterWizardFinalStep() {
+      if (!state.settingsWizard.active) return false;
+      const steps = parameterWizardStepsForMode(state.settingsWizard.mode);
+      return state.settingsWizard.stepIndex >= steps.length - 1;
+    }
+
+    function openWizardReportIfReady() {
+      if (!state.openReportAfterCalculate) return;
+      if (state.lastRows.length && state.lastSummary?.generatedAt) {
+        state.openReportAfterCalculate = false;
+        finishParameterWizard();
+        setTimeout(openReport, 0);
+      } else if (!state.punLoading) {
+        state.openReportAfterCalculate = false;
+      }
+    }
+
+    function handleScenarioCalculation() {
+      state.openReportAfterCalculate = isParameterWizardFinalStep();
+      calculate({ userTriggered: true });
+      openWizardReportIfReady();
+    }
+
+    function applyInitialModeSelection() {
+      const mode = document.getElementById("initialBessMode").value;
+      localStorage.setItem(SELECTED_MODE_KEY, mode);
+      document.getElementById("bessMode").value = mode;
+      if (mode === "arbitrage" || mode === "hybrid") {
+        setMode("pun");
+      } else if (mode === "bill") {
+        setMode("fixed");
+      } else {
+        updateBessModeControls({ skipCalculate: true });
+      }
+      resetScenarioParametersToZero(mode);
+      sessionStorage.setItem(MODE_READY_KEY, "1");
+      updateAuthView();
+      setTimeout(() => startParameterWizard(mode), 0);
+      markScenarioDirty(`Modalità ${modeLabel(mode)} selezionata: segui gli step FV, BESS, rete e prezzo energia.`);
+    }
+
+    function returnToModeSelection() {
+      const currentMode = document.getElementById("bessMode").value || localStorage.getItem(SELECTED_MODE_KEY) || "ci";
+      localStorage.setItem(SELECTED_MODE_KEY, currentMode);
+      document.getElementById("initialBessMode").value = currentMode;
+      state.settingsWizard.active = false;
+      document.getElementById("appShell")?.classList.remove("settings-wizard-active");
+      sessionStorage.removeItem(MODE_READY_KEY);
+      updateModeGuide();
+      updateAuthView();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function authPayloadFromRegistration() {
+      const name = document.getElementById("registerName").value.trim();
+      const surname = document.getElementById("registerSurname").value.trim();
+      const email = normalizeEmail(document.getElementById("registerEmail").value);
+      const phone = document.getElementById("registerPhone").value.trim();
+      if (!name || !surname || !email || !phone) {
+        throw new Error("Compila nome, cognome, email e telefono.");
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        throw new Error("Inserisci una email valida.");
+      }
+      return { name, surname, email, phone };
+    }
+
+    async function requestRegisterOtp() {
+      try {
+        const payload = authPayloadFromRegistration();
+        const localOtp = generateLocalOtp();
+        authState.registerChallenge = { ...payload, otp: localOtp, otpId: null };
+        try {
+          const result = await authApi("/api/auth/register/start", payload);
+          authState.registerChallenge.otpId = result.otpId || null;
+          if (result.devOtp) authState.registerChallenge.otp = result.devOtp;
+          const devNote = result.devOtp ? ` OTP sviluppo: ${result.devOtp}` : "";
+          setAuthStatus("registerStatus", `OTP inviato alla mail ${payload.email}.${devNote}`, "success");
+        } catch {
+          setAuthStatus("registerStatus", `Modalita locale: usa OTP ${localOtp} per convalidare l'iscrizione.`, "success");
+        }
+      } catch (error) {
+        setAuthStatus("registerStatus", error.message, "error");
+      }
+    }
+
+    async function verifyRegisterOtp() {
+      const challenge = authState.registerChallenge;
+      const otp = document.getElementById("registerOtp").value.trim();
+      if (!challenge) {
+        setAuthStatus("registerStatus", "Prima invia l'OTP di convalida.", "error");
+        return;
+      }
+      try {
+        let verified = otp && otp === challenge.otp;
+        if (challenge.otpId) {
+          try {
+            const result = await authApi("/api/auth/register/verify", { otpId: challenge.otpId, email: challenge.email, otp });
+            verified = !!result.verified;
+          } catch (error) {
+            if (!verified) throw error;
+          }
+        }
+        if (!verified) throw new Error("OTP non corretto.");
+        const user = {
+          name: challenge.name,
+          surname: challenge.surname,
+          email: challenge.email,
+          phone: challenge.phone,
+          verifiedAt: new Date().toISOString()
+        };
+        const users = localUsers();
+        users[user.email] = user;
+        saveLocalUsers(users);
+        setAuthStatus("registerStatus", "Iscrizione convalidata. Accesso effettuato.", "success");
+        enterApp(user);
+      } catch (error) {
+        setAuthStatus("registerStatus", error.message, "error");
+      }
+    }
+
+    async function requestLoginOtp() {
+      const email = normalizeEmail(document.getElementById("loginEmail").value);
+      if (!email) {
+        setAuthStatus("loginStatus", "Inserisci la email.", "error");
+        return;
+      }
+      const users = localUsers();
+      if (!users[email]) {
+        setAuthStatus("loginStatus", "Email non registrata su questo dispositivo. Premi Registrati.", "error");
+        return;
+      }
+      const localOtp = generateLocalOtp();
+      authState.loginChallenge = { email, otp: localOtp, otpId: null };
+      try {
+        const result = await authApi("/api/auth/login/start", { email });
+        authState.loginChallenge.otpId = result.otpId || null;
+        if (result.devOtp) authState.loginChallenge.otp = result.devOtp;
+        const devNote = result.devOtp ? ` OTP sviluppo: ${result.devOtp}` : "";
+        setAuthStatus("loginStatus", `OTP inviato alla mail ${email}.${devNote}`, "success");
+      } catch {
+        setAuthStatus("loginStatus", `Modalita locale: usa OTP ${localOtp} per accedere.`, "success");
+      }
+    }
+
+    async function verifyLoginOtp() {
+      const challenge = authState.loginChallenge;
+      const otp = document.getElementById("loginOtp").value.trim();
+      if (!challenge) {
+        setAuthStatus("loginStatus", "Prima invia l'OTP di accesso.", "error");
+        return;
+      }
+      try {
+        let verified = otp && otp === challenge.otp;
+        if (challenge.otpId) {
+          try {
+            const result = await authApi("/api/auth/login/verify", { otpId: challenge.otpId, email: challenge.email, otp });
+            verified = !!result.verified;
+          } catch (error) {
+            if (!verified) throw error;
+          }
+        }
+        if (!verified) throw new Error("OTP non corretto.");
+        const users = localUsers();
+        enterApp(users[challenge.email] || { email: challenge.email, name: challenge.email });
+      } catch (error) {
+        setAuthStatus("loginStatus", error.message, "error");
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem(AUTH_USER_KEY);
+      sessionStorage.removeItem(MODE_READY_KEY);
+      authState.loginChallenge = null;
+      authState.registerChallenge = null;
+      state.settingsWizard.active = false;
+      document.getElementById("appShell")?.classList.remove("settings-wizard-active");
+      document.getElementById("loginOtp").value = "";
+      document.getElementById("registerOtp").value = "";
+      setAuthStatus("loginStatus", "");
+      setAuthStatus("registerStatus", "");
+      updateAuthView();
+    }
+
     function energyValueFromEuroMwh(kwhValue, euroMwhValue) {
       return kwhValue * euroMwhValue / 1000;
     }
@@ -1042,7 +2036,9 @@
 
       const totalCapacity = product.capacityKwh * units;
       const totalPower = product.powerKw * units;
-      const totalInvestment = product.priceEuroKwh * totalCapacity;
+      const totalInvestment = product.fixedInvestmentEuro
+        ? product.fixedInvestmentEuro * units
+        : product.priceEuroKwh * totalCapacity;
       document.getElementById("bess").value = totalCapacity.toFixed(0);
       document.getElementById("chargePower").value = totalPower.toFixed(0);
       document.getElementById("dischargePower").value = totalPower.toFixed(0);
@@ -1055,14 +2051,21 @@
       status.textContent =
         `${units} x ${product.name}: ${totalCapacity.toLocaleString("it-IT")} kWh, ` +
         `${totalPower.toLocaleString("it-IT")} kW, investimento stimato ${euro(totalInvestment)} ` +
-        `(${product.priceEuroKwh.toLocaleString("it-IT")} euro/kWh).${maxText}${limitText}`;
+        `${product.fixedInvestmentEuro ? "(prezzo fisso prodotto)" : `(${product.priceEuroKwh.toLocaleString("it-IT")} euro/kWh)`}.${maxText}${limitText}`;
 
       if (!options.skipCalculate) scheduleCalculate();
     }
 
     function parseNumber(value) {
       if (value === undefined || value === null) return NaN;
-      const text = String(value).trim();
+      let text = String(value).trim().replace(/\u00a0/g, " ");
+      if (
+        (text.startsWith('"') && text.endsWith('"')) ||
+        (text.startsWith("'") && text.endsWith("'"))
+      ) {
+        text = text.slice(1, -1).trim();
+      }
+      text = text.replace(/\s+/g, "").replace(/[€]/g, "");
       if (!text) return NaN;
       if (text.includes(",")) return Number(text.replace(/\./g, "").replace(",", "."));
       return Number(text);
@@ -1079,8 +2082,7 @@
     }
 
     function splitLine(line) {
-      const delimiter = line.includes(";") ? ";" : ",";
-      return line.split(delimiter).map(item => item.trim());
+      return parseDelimitedLine(line).map(item => item.trim());
     }
 
     function activeConsumptionCsv() {
@@ -1093,6 +2095,47 @@
 
     function clearDemoInputOverride() {
       state.demoInputOverride = null;
+    }
+
+    function resetScenarioParametersToZero(mode = document.getElementById("bessMode").value) {
+      clearDemoInputOverride();
+      state.pvgisMap = new Map();
+      state.pvgisLoaded = false;
+      state.pvgisAnnualKwh = 0;
+
+      document.querySelectorAll("#appShell input[type='number']").forEach(input => {
+        input.value = "0";
+      });
+      document.querySelectorAll("#appShell input[type='file']").forEach(input => {
+        input.value = "";
+      });
+      document.querySelectorAll("#appShell textarea").forEach(textarea => {
+        textarea.value = "";
+      });
+
+      document.getElementById("smartEProduct").value = "custom";
+      document.getElementById("smartEUnits").value = "0";
+      document.getElementById("pvModel").value = "simple";
+      document.getElementById("quickMonthly").value = "0;0;0;0;0;0;0;0;0;0;0;0";
+      document.getElementById("chargeFromSurplus").checked = false;
+      document.getElementById("allowGridCharge").checked = false;
+
+      document.getElementById("fileStatus").textContent = "Nessun file consumi caricato.";
+      document.getElementById("pvFileStatus").textContent = "FV immessa impostata a zero.";
+      document.getElementById("billFileStatus").textContent = "Nessun file bollette caricato.";
+      document.getElementById("pvgisStatus").textContent = "PVGIS non caricato.";
+      document.getElementById("quickPvStatus").textContent = "Produzione annua FV2 = 0 kWh/anno.";
+      document.getElementById("smartEProductStatus").textContent = "Configurazione manuale: inserisci kWh, kW e investimento BESS.";
+
+      if (mode === "arbitrage" || mode === "hybrid") {
+        setMode("pun");
+      } else {
+        setMode("fixed");
+      }
+      document.getElementById("bessMode").value = mode;
+      updateBessModeControls({ skipCalculate: true });
+      updatePvModelVisibility({ skipCalculate: true });
+      resetDashboardToZero("Parametri iniziali a zero: compila i campi e premi Calcola scenario.");
     }
 
     function rowKey(date, hour) {
@@ -1202,30 +2245,40 @@
       const mode = document.getElementById("bessMode").value;
       const isArbitrage = mode === "arbitrage";
       const isHybrid = mode === "hybrid";
-      document.getElementById("fvSizeField").classList.toggle("hidden", isArbitrage);
-      document.getElementById("fvProductionTitle").classList.toggle("hidden", isArbitrage);
-      document.getElementById("pvModelField").classList.toggle("hidden", isArbitrage);
-      document.getElementById("pvgisBox").classList.toggle("hidden", isArbitrage);
-      document.getElementById("costFvField").classList.toggle("hidden", isArbitrage);
-      document.getElementById("customerDataInputs").classList.toggle("hidden", isArbitrage);
+      const isBill = mode === "bill";
+      document.getElementById("fvSizeField").classList.toggle("hidden", isArbitrage || isBill);
+      document.getElementById("fvProductionTitle").classList.toggle("hidden", isArbitrage || isBill);
+      document.getElementById("pvModelField").classList.toggle("hidden", isArbitrage || isBill);
+      document.getElementById("pvgisBox").classList.toggle("hidden", isArbitrage || isBill);
+      document.getElementById("costFvField").classList.toggle("hidden", isArbitrage || isBill);
+      document.getElementById("paramDataMenu").classList.toggle("hidden", isArbitrage);
+      document.querySelector("#paramDataMenu summary").textContent = isBill
+        ? "Dati bollette"
+        : (isHybrid ? "Produzione FV oraria" : "Dati cliente");
+      document.getElementById("customerDataInputs").classList.toggle("hidden", isArbitrage || isBill);
+      document.getElementById("billDataInputs").classList.toggle("hidden", !isBill);
       document.getElementById("consumptionFileField").classList.toggle("hidden", isHybrid);
       document.getElementById("fileStatus").classList.toggle("hidden", isHybrid);
       document.getElementById("dataField").classList.toggle("hidden", isHybrid);
       document.getElementById("customerDataTitle").textContent = isHybrid ? "Produzione FV Oraria" : "Dati Cliente Orari";
       document.getElementById("pvFileLabel").textContent = isHybrid ? "File produzione FV [CSV/XLSX/XLS]" : "File energia FV immessa [CSV/XLSX/XLS]";
       document.getElementById("pvDataLabel").textContent = isHybrid ? "CSV produzione FV: data; ora; produzione FV" : "CSV FV immessa: data; ora; immessa FV";
-      document.getElementById("loadCompleteDemo").classList.toggle("hidden", isArbitrage);
-      document.getElementById("punCostAdders").classList.toggle("hidden", isArbitrage || isHybrid);
+      document.getElementById("loadCompleteDemo").classList.toggle("hidden", isArbitrage || isBill);
+      document.getElementById("punCostAdders").classList.toggle("hidden", isArbitrage || isHybrid || isBill);
       document.getElementById("arbitragePunSettings").classList.toggle("hidden", !(isArbitrage || isHybrid) || state.priceMode !== "pun");
-      document.getElementById("chargeFromSurplusLine").classList.toggle("hidden", isArbitrage || isHybrid);
-      document.getElementById("allowGridChargeLine").classList.toggle("hidden", isArbitrage || isHybrid);
-      document.getElementById("bessPunThresholds").classList.toggle("hidden", isArbitrage || isHybrid || state.priceMode !== "pun");
+      document.getElementById("chargeFromSurplusLine").classList.toggle("hidden", isArbitrage || isHybrid || isBill);
+      document.getElementById("allowGridChargeLine").classList.toggle("hidden", isArbitrage || isHybrid || isBill);
+      document.getElementById("bessPunThresholds").classList.toggle("hidden", isArbitrage || isHybrid || isBill || state.priceMode !== "pun");
       document.getElementById("punChargeThresholdField").classList.toggle("hidden", isHybrid);
       document.getElementById("punDischargeThresholdField").classList.toggle("hidden", !isHybrid);
       if (isHybrid) {
         document.getElementById("chargeFromSurplus").checked = true;
         document.getElementById("allowGridCharge").checked = true;
         document.getElementById("socInitialPct").value = document.getElementById("socMinPct").value;
+      }
+      if (isBill && state.priceMode !== "fixed") {
+        setMode("fixed");
+        return;
       }
       if (isHybrid && state.priceMode !== "pun") {
         setMode("pun");
@@ -1293,6 +2346,52 @@
         zones,
         year: db.year || 2025,
         detected: `pun_static_${db.year || 2025}_${zones[zoneIndex]}`
+      };
+    }
+
+    function punCsvYear(csv) {
+      const firstLine = String(csv || "")
+        .split(/\n+/)
+        .map(line => line.trim())
+        .find(Boolean);
+      if (!firstLine) return new Date().getFullYear();
+      const parts = splitLine(firstLine);
+      return yearFromValue(parts[0]) || new Date().getFullYear();
+    }
+
+    function manualPunStorage() {
+      try {
+        return JSON.parse(localStorage.getItem(PUN_MANUAL_DB_KEY) || "{}");
+      } catch (error) {
+        return {};
+      }
+    }
+
+    function saveManualPunResult(zone, result, filename = "") {
+      if (!result?.csv) return;
+      try {
+        const db = manualPunStorage();
+        const zoneKey = normalizeZoneLabel(zone);
+        db[zoneKey] = {
+          csv: result.csv,
+          average: Number(result.average) || 0,
+          rowCount: Number(result.rowCount) || parsePunCsv(result.csv).size || 0,
+          year: Number(result.year) || punCsvYear(result.csv),
+          filename,
+          updatedAt: new Date().toISOString()
+        };
+        localStorage.setItem(PUN_MANUAL_DB_KEY, JSON.stringify(db));
+      } catch (error) {
+        console.warn("PUN manuale non salvato nel browser", error);
+      }
+    }
+
+    function loadManualPunResult(zone) {
+      const stored = manualPunStorage()[normalizeZoneLabel(zone)];
+      if (!stored?.csv) return null;
+      return {
+        ...stored,
+        detected: `pun_manual_browser_${normalizeZoneLabel(zone)}`
       };
     }
 
@@ -1749,6 +2848,7 @@
       const mode = document.getElementById("bessMode").value;
       const isArbitrage = mode === "arbitrage";
       const isHybrid = mode === "hybrid";
+      const isBill = mode === "bill";
       const socMin = capacity * numberValue("socMinPct") / 100;
       const socInitialPct = isHybrid ? numberValue("socMinPct") : numberValue("socInitialPct");
       return {
@@ -1760,12 +2860,13 @@
         socInitial: capacity * socInitialPct / 100,
         etaCharge: Math.max(0.01, numberValue("etaCharge") / 100),
         etaDischarge: Math.max(0.01, numberValue("etaDischarge") / 100),
-        chargeFromSurplus: isArbitrage ? false : (isHybrid ? true : document.getElementById("chargeFromSurplus").checked),
-        allowGridCharge: (isArbitrage || isHybrid) ? true : document.getElementById("allowGridCharge").checked,
+        chargeFromSurplus: isArbitrage || isBill ? false : (isHybrid ? true : document.getElementById("chargeFromSurplus").checked),
+        allowGridCharge: (isArbitrage || isHybrid) ? true : (isBill ? false : document.getElementById("allowGridCharge").checked),
         punChargeThreshold: numberValue("punChargeThreshold"),
         punDischargeThreshold: numberValue("punDischargeThreshold"),
         minArbitrageSpread: (isArbitrage || isHybrid) ? Math.max(0, numberValue("punArbMinSpread")) : 0,
-        targetDailyCycles: isArbitrage ? Math.max(0, numberValue("targetDailyCycles")) : 0
+        targetDailyCycles: isArbitrage ? Math.max(0, numberValue("targetDailyCycles")) : 0,
+        billDailyCycles: isBill ? 1 : 0
       };
     }
 
@@ -1776,7 +2877,15 @@
     function renderHourlyPreview(previewRows, bess) {
       const isArbitrage = bess.mode === "arbitrage";
       const isHybrid = bess.mode === "hybrid";
-      const headers = isArbitrage
+      const isBill = bess.mode === "bill";
+      const headers = isBill
+        ? [
+          "Mese", "Produzione FV", "F1 prelevata", "F2 prelevata", "F3 prelevata",
+          "F1 immessa", "F2 immessa", "F3 immessa", "Carica BESS da immessa",
+          "Scarica BESS su prelievo", "Prelievo post BESS", "Immessa post BESS",
+          "Risparmio prelievo", "Mancato ricavo immessa", "Beneficio netto"
+        ]
+        : isArbitrage
         ? ["Data", "Ora", "PUN [euro/MWh]", "Carica BESS da rete", "Scarica BESS", "Vendita BESS a rete", "SOC [%]", "Prelievo rete Post BESS"]
         : isHybrid
           ? [
@@ -1794,6 +2903,25 @@
         `<tr>${headers.map(header => `<th>${header}</th>`).join("")}</tr>`;
 
       document.getElementById("rows").innerHTML = previewRows.map(row => {
+        if (isBill) {
+          return `<tr>
+            <td>${row.monthKey}</td>
+            <td>${formatNumber(row.pvProduction)}</td>
+            <td>${formatNumber(row.f1Import)}</td>
+            <td>${formatNumber(row.f2Import)}</td>
+            <td>${formatNumber(row.f3Import)}</td>
+            <td>${formatNumber(row.f1Export)}</td>
+            <td>${formatNumber(row.f2Export)}</td>
+            <td>${formatNumber(row.f3Export)}</td>
+            <td>${formatNumber(row.charge)}</td>
+            <td>${formatNumber(row.discharge)}</td>
+            <td>${formatNumber(row.postBess)}</td>
+            <td>${formatNumber(row.exportResidual)}</td>
+            <td>${euro(row.savingEuro)}</td>
+            <td>${euro(row.lostRevenueEuro)}</td>
+            <td>${euro(row.netBenefitEuro)}</td>
+          </tr>`;
+        }
         if (isArbitrage) {
           return `<tr>
             <td>${row.date}</td>
@@ -1890,6 +3018,83 @@
       document.getElementById("rows").innerHTML = "";
       document.getElementById("tableStatus").textContent = "Mostrate 0 righe orarie calcolate.";
       document.getElementById("calcStatus").textContent = message;
+    }
+
+    function previewPeriodText(info) {
+      return info?.start && info?.end ? `${info.start} - ${info.end}` : "-";
+    }
+
+    function hideScenarioOnlyEnergyMetrics() {
+      setMetric("aPostFv", "", "-", false);
+      setMetric("aScaricaBess", "", "-", false);
+      setMetric("aCicliBess", "", "-", false);
+      setMetric("aPostBess", "", "-", false);
+      setMetric("aImmessaPostBess", "", "-", false);
+    }
+
+    function loadDataPreview() {
+      const mode = document.getElementById("bessMode").value;
+      if (mode === "bill") {
+        loadBillDataPreview();
+        return;
+      }
+      if (mode === "arbitrage") {
+        document.getElementById("calcStatus").textContent = "In arbitraggio PUN non ci sono dati cliente da caricare: imposta BESS, rete e prezzo energia.";
+        return;
+      }
+
+      const rows = parseRows();
+      if (!rows.length) {
+        resetDashboardToZero("Nessun dato valido: carica un file o compila la tabella e premi Carica dati.");
+        return;
+      }
+
+      const info = state.lastAnnualWindowInfo || {};
+      const totalLoad = rows.reduce((sum, row) => sum + Math.max(0, row.load || 0), 0);
+      const totalPvFile = rows.reduce((sum, row) => sum + Math.max(0, row.exportedFv1 || 0), 0);
+      const averagePv = rows.length ? totalPvFile / rows.length : 0;
+      resetDashboardToZero("");
+      if (mode === "hybrid") {
+        setMetric("aPrelievo", "Produzione FV caricata", kwh(totalPvFile));
+        setMetric("aImmessaAttuale", "Righe orarie usate", plainNumber(rows.length, "righe", 0));
+        setMetric("aImmessaFv", "Produzione media oraria", kwh(averagePv));
+        setMetric("aProduzioneFv2", "Periodo dati", previewPeriodText(info));
+        setMetric("aSurplusFv", "Righe scartate", plainNumber(info.discardedRows || 0, "righe", 0));
+      } else {
+        setMetric("aPrelievo", "Prelievo rete caricato", kwh(totalLoad));
+        setMetric("aImmessaAttuale", "Energia FV immessa caricata", kwh(totalPvFile));
+        setMetric("aImmessaFv", "Righe orarie usate", plainNumber(rows.length, "righe", 0));
+        setMetric("aProduzioneFv2", "Periodo dati", previewPeriodText(info));
+        setMetric("aSurplusFv", "Righe scartate", plainNumber(info.discardedRows || 0, "righe", 0));
+      }
+      hideScenarioOnlyEnergyMetrics();
+      document.getElementById("tableStatus").textContent = `Dati caricati in dashboard: ${rows.length.toLocaleString("it-IT")} righe orarie usate.`;
+      document.getElementById("calcStatus").textContent = "Dati caricati: controlla la dashboard, poi continua con i parametri e calcola lo scenario.";
+    }
+
+    function loadBillDataPreview() {
+      const rows = parseBillMonthlyRows();
+      if (!rows.length) {
+        resetDashboardToZero("Nessun dato bolletta valido: carica un file F1-F2-F3 o compila la tabella e premi Carica dati.");
+        return;
+      }
+      const info = state.lastAnnualWindowInfo || {};
+      const totalImport = rows.reduce((sum, row) => sum + Math.max(0, row.load || 0), 0);
+      const totalExport = rows.reduce((sum, row) => sum + Math.max(0, row.exportedFv1 || 0), 0);
+      const totalPv = rows.reduce((sum, row) => sum + Math.max(0, row.pvProduction || 0), 0);
+      resetDashboardToZero("");
+      setMetric("aPrelievo", "Energia prelevata caricata", kwh(totalImport));
+      setMetric("aImmessaAttuale", "Energia immessa caricata", kwh(totalExport));
+      setMetric("aImmessaFv", "Produzione FV caricata", kwh(totalPv));
+      setMetric("aProduzioneFv2", "Mesi usati", plainNumber(rows.length, "mesi", 0));
+      setMetric("aSurplusFv", "Periodo dati", previewPeriodText(info));
+      setMetric("aPostFv", "Mesi scartati", plainNumber(info.discardedRows || 0, "mesi", 0));
+      setMetric("aScaricaBess", "", "-", false);
+      setMetric("aCicliBess", "", "-", false);
+      setMetric("aPostBess", "", "-", false);
+      setMetric("aImmessaPostBess", "", "-", false);
+      document.getElementById("tableStatus").textContent = `Dati bollette caricati in dashboard: ${rows.length.toLocaleString("it-IT")} mesi usati.`;
+      document.getElementById("calcStatus").textContent = "Dati bollette caricati: controlla la dashboard, poi continua con i parametri e calcola lo scenario.";
     }
 
     function arbitrageChargePowerLimit(bess, gridImportLimit) {
@@ -2337,6 +3542,10 @@
     }
 
     function calculate(options = {}) {
+      const bess = readBessConfig();
+      if (bess.mode === "bill") {
+        return calculateBillScenario(options, bess);
+      }
       if (!ensureHourlyPunReady(options)) {
         return state.lastSummary;
       }
@@ -2353,7 +3562,6 @@
       const exportSalePriceEuroMwh = Math.max(0, numberValue("exportSalePrice")) * 1000;
       document.getElementById("quickPvStatus").textContent =
         `Produzione annua FV2 rapida: ${(fvSize * numberValue("quickSpecificYield")).toLocaleString("it-IT", { maximumFractionDigits: 0 })} kWh/anno.`;
-      const bess = readBessConfig();
       let soc = clamp(bess.socInitial, bess.socMin, bess.capacity);
       let totalLoad = 0;
       let totalExportedFvFile = 0;
@@ -2978,6 +4186,37 @@
       const mode = state.lastSummary?.bessMode || document.getElementById("bessMode").value;
       const isArbitrage = mode === "arbitrage";
       const isHybrid = mode === "hybrid";
+      const isBill = mode === "bill";
+      if (isBill) {
+        return {
+          headers: [
+            "Mese", "Produzione FV [kWh]", "F1 prelevata [kWh]", "F2 prelevata [kWh]", "F3 prelevata [kWh]",
+            "F1 immessa [kWh]", "F2 immessa [kWh]", "F3 immessa [kWh]",
+            "Carica BESS da immessa [kWh]", "Scarica BESS su prelievo [kWh]",
+            "Prelievo post BESS [kWh]", "Immessa post BESS [kWh]",
+            "Risparmio prelievo [euro]", "Mancato ricavo immessa [euro]",
+            "Beneficio netto [euro]", "Cicli BESS"
+          ],
+          rows: state.lastRows.map(row => [
+            row.monthKey,
+            row.pvProduction,
+            row.f1Import,
+            row.f2Import,
+            row.f3Import,
+            row.f1Export,
+            row.f2Export,
+            row.f3Export,
+            row.charge,
+            row.discharge,
+            row.postBess,
+            row.exportResidual,
+            row.savingEuro,
+            row.lostRevenueEuro,
+            row.netBenefitEuro,
+            row.cycles
+          ])
+        };
+      }
       if (isArbitrage) {
         return {
           headers: [
@@ -3081,6 +4320,121 @@
       downloadText(`tabella_oraria_fv_bess_${stamp}.xls`, workbook, "application/vnd.ms-excel;charset=utf-8");
       document.getElementById("tableStatus").textContent =
         `Esportate ${state.lastRows.length.toLocaleString("it-IT")} righe orarie in Excel.`;
+    }
+
+    function workbookXml(sheetName, headers, rows) {
+      const rowsXml = [
+        `<Row>${headers.map(xmlCell).join("")}</Row>`,
+        ...rows.map(row => `<Row>${row.map(xmlCell).join("")}</Row>`)
+      ].join("");
+      return `<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+  <Worksheet ss:Name="${String(sheetName).replace(/"/g, "")}">
+    <Table>${rowsXml}</Table>
+  </Worksheet>
+</Workbook>`;
+    }
+
+    function exampleHourlyDates() {
+      const year = new Date().getFullYear();
+      return Array.from({ length: 24 }, (_, hour) => [`01/01/${year}`, hour]);
+    }
+
+    function downloadConsumptionTemplate() {
+      const rows = exampleHourlyDates().map(([date, hour]) => [
+        date,
+        hour,
+        hour >= 8 && hour <= 18 ? 120 : 45,
+        ""
+      ]);
+      downloadText(
+        `esempio_consumi_orari_${new Date().getFullYear()}.xls`,
+        workbookXml("Consumi orari", ["data", "ora", "prelievo rete", "PUN opzionale"], rows),
+        "application/vnd.ms-excel;charset=utf-8"
+      );
+      document.getElementById("fileStatus").textContent =
+        "Esempio consumi scaricato: compila data, ora e prelievo rete in kWh.";
+    }
+
+    function downloadPvTemplate() {
+      const isHybrid = document.getElementById("bessMode").value === "hybrid";
+      const header = isHybrid
+        ? ["data", "ora", "produzione FV"]
+        : ["data", "ora", "immessa FV"];
+      const rows = exampleHourlyDates().map(([date, hour]) => {
+        const daylight = Math.max(0, 1 - Math.abs(hour - 12) / 6);
+        const value = Math.round(daylight * (isHybrid ? 180 : 80) * 10) / 10;
+        return [date, hour, value];
+      });
+      downloadText(
+        `${isHybrid ? "esempio_produzione_fv" : "esempio_energia_fv_immessa"}_${new Date().getFullYear()}.xls`,
+        workbookXml(isHybrid ? "Produzione FV" : "FV immessa", header, rows),
+        "application/vnd.ms-excel;charset=utf-8"
+      );
+      document.getElementById("pvFileStatus").textContent = isHybrid
+        ? "Esempio produzione FV scaricato: compila data, ora e produzione FV in kWh."
+        : "Esempio FV immessa scaricato: compila data, ora e immessa FV in kWh.";
+    }
+
+    function clearConsumptionData() {
+      clearDemoInputOverride();
+      document.getElementById("consumptionFile").value = "";
+      document.getElementById("data").value = "01/01/2025;0;0";
+      document.getElementById("fileStatus").textContent = "Dati consumi cancellati: prelievo rete riportato a zero.";
+      resetDashboardToZero("Dati consumi cancellati: premi Calcola scenario dopo aver caricato nuovi dati.");
+    }
+
+    function clearPvData() {
+      clearDemoInputOverride();
+      document.getElementById("pvFile").value = "";
+      document.getElementById("pvData").value = "01/01/2025;0;0";
+      document.getElementById("pvFileStatus").textContent = document.getElementById("bessMode").value === "hybrid"
+        ? "Dati produzione FV cancellati: produzione da file riportata a zero."
+        : "Dati FV immessa cancellati: energia immessa da file riportata a zero.";
+      resetDashboardToZero("Dati FV cancellati: premi Calcola scenario dopo aver caricato nuovi dati.");
+    }
+
+    function clearBillData() {
+      clearDemoInputOverride();
+      document.getElementById("billFile").value = "";
+      document.getElementById("billData").value = "mese;F1 immessa;F2 immessa;F3 immessa;F1 prelevata;F2 prelevata;F3 prelevata;produzione FV\n01/01/2025;0;0;0;0;0;0;0";
+      document.getElementById("billFileStatus").textContent = "Dati bollette cancellati: prospetto F1-F2-F3 riportato a zero.";
+      resetDashboardToZero("Dati bollette cancellati: premi Calcola scenario dopo aver caricato nuovi dati.");
+    }
+
+    function downloadBillTemplate() {
+      const year = new Date().getFullYear();
+      const rows = Array.from({ length: 12 }, (_, index) => [
+        `01/${String(index + 1).padStart(2, "0")}/${year}`,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]);
+      const rowsXml = [
+        `<Row>${BILL_HEADER.map(xmlCell).join("")}</Row>`,
+        ...rows.map(row => `<Row>${row.map(xmlCell).join("")}</Row>`)
+      ].join("");
+      const workbook = `<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+  <Worksheet ss:Name="Modello bollette">
+    <Table>${rowsXml}</Table>
+  </Worksheet>
+</Workbook>`;
+      downloadText(`modello_bollette_f1_f2_f3_${year}.xls`, workbook, "application/vnd.ms-excel;charset=utf-8");
+      document.getElementById("billFileStatus").textContent =
+        "Modello bollette scaricato: compila i mesi e poi carica il file nella stessa sezione.";
     }
 
     function arrayBufferToBase64(buffer) {
@@ -3504,6 +4858,605 @@
       };
     }
 
+    const BILL_HEADER = [
+      "mese",
+      "F1 immessa",
+      "F2 immessa",
+      "F3 immessa",
+      "F1 prelevata",
+      "F2 prelevata",
+      "F3 prelevata",
+      "Produzione FV"
+    ];
+
+    function detectDelimiter(line) {
+      const text = String(line || "");
+      let semicolons = 0;
+      let tabs = 0;
+      let commas = 0;
+      let inQuotes = false;
+      for (let i = 0; i < text.length; i += 1) {
+        const char = text[i];
+        if (char === '"') {
+          if (inQuotes && text[i + 1] === '"') {
+            i += 1;
+          } else {
+            inQuotes = !inQuotes;
+          }
+        } else if (!inQuotes) {
+          if (char === ";") semicolons += 1;
+          if (char === "\t") tabs += 1;
+          if (char === ",") commas += 1;
+        }
+      }
+      if (semicolons >= tabs && semicolons >= commas && semicolons > 0) return ";";
+      if (tabs >= commas && tabs > 0) return "\t";
+      return ",";
+    }
+
+    function parseDelimitedLine(line, delimiter = null) {
+      const text = String(line ?? "");
+      const separator = delimiter || detectDelimiter(text);
+      const cells = [];
+      let current = "";
+      let inQuotes = false;
+      for (let i = 0; i < text.length; i += 1) {
+        const char = text[i];
+        if (char === '"') {
+          if (inQuotes && text[i + 1] === '"') {
+            current += '"';
+            i += 1;
+          } else {
+            inQuotes = !inQuotes;
+          }
+        } else if (!inQuotes && char === separator) {
+          cells.push(current.trim());
+          current = "";
+        } else {
+          current += char;
+        }
+      }
+      cells.push(current.trim());
+      return cells;
+    }
+
+    function delimitedTextToRows(text) {
+      const lines = String(text || "")
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(Boolean);
+      const delimiter = detectDelimiter(lines.find(line => line.trim()) || "");
+      return lines.map(line => parseDelimitedLine(line, delimiter));
+    }
+
+    function normalizeBillHeader(value) {
+      return String(value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "");
+    }
+
+    const italianMonthNumbers = {
+      gennaio: 1,
+      gen: 1,
+      febbraio: 2,
+      feb: 2,
+      marzo: 3,
+      mar: 3,
+      aprile: 4,
+      apr: 4,
+      maggio: 5,
+      mag: 5,
+      giugno: 6,
+      giu: 6,
+      luglio: 7,
+      lug: 7,
+      agosto: 8,
+      ago: 8,
+      settembre: 9,
+      set: 9,
+      ottobre: 10,
+      ott: 10,
+      novembre: 11,
+      nov: 11,
+      dicembre: 12,
+      dic: 12
+    };
+
+    function yearFromValue(value) {
+      const match = String(value ?? "").match(/\b(20\d{2}|19\d{2})\b/);
+      return match ? Number(match[1]) : 0;
+    }
+
+    function monthKeyFromValue(value, fallbackYear = 0) {
+      const text = String(value ?? "").trim();
+      if (!text) return "";
+      const numeric = parseNumber(text);
+      if (Number.isFinite(numeric) && numeric > 20000) {
+        return isoDateKey(spreadsheetDate(numeric)).slice(0, 7);
+      }
+
+      const ymd = text.match(/^(\d{4})[/-](\d{1,2})(?:[/-](\d{1,2}))?/);
+      if (ymd) return `${ymd[1]}-${ymd[2].padStart(2, "0")}`;
+      const dmy = text.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})/);
+      if (dmy) {
+        const year = dmy[3].length === 2 ? `20${dmy[3]}` : dmy[3];
+        return `${year}-${dmy[2].padStart(2, "0")}`;
+      }
+      const my = text.match(/^(\d{1,2})[/-](\d{4})$/);
+      if (my) return `${my[2]}-${my[1].padStart(2, "0")}`;
+      const normalizedMonth = normalizeBillHeader(text);
+      if (italianMonthNumbers[normalizedMonth] && fallbackYear) {
+        return `${fallbackYear}-${String(italianMonthNumbers[normalizedMonth]).padStart(2, "0")}`;
+      }
+      return "";
+    }
+
+    function billMonthDisplay(monthKey) {
+      const parts = String(monthKey || "").split("-");
+      if (parts.length !== 2) return monthKey || "";
+      return `01/${parts[1]}/${parts[0]}`;
+    }
+
+    function billColumnIndex(headers, band, kind) {
+      const normalizedBand = normalizeBillHeader(band);
+      return headers.findIndex(header => {
+        const value = normalizeBillHeader(header);
+        if (!value.includes(normalizedBand)) return false;
+        if (kind === "export") return value.includes("immess") || value.includes("cedut");
+        return value.includes("prelev") || value.includes("preliev") || value.includes("consum");
+      });
+    }
+
+    function billTotalExportColumnIndex(headers) {
+      return headers.findIndex(header => {
+        const value = normalizeBillHeader(header);
+        const hasBand = value.includes("f1") || value.includes("f2") || value.includes("f3");
+        if (hasBand) return false;
+        const looksExport = value.includes("immess") || value.includes("cedut") || value.includes("inviata") || value.includes("inviato");
+        const looksGrid = value.includes("rete") || value.includes("pod") || value.includes("fv");
+        const looksProductionOnly = value.includes("prodott") || value.includes("produzion");
+        return looksExport && looksGrid && !looksProductionOnly;
+      });
+    }
+
+    function billProductionColumnIndex(headers) {
+      return headers.findIndex(header => {
+        const value = normalizeBillHeader(header);
+        const looksPv = value.includes("fv") || value.includes("fotovoltaic");
+        const looksProduction = value.includes("prodott") || value.includes("produzion") || value.includes("prodotta");
+        const looksGridExport = value.includes("immess") || value.includes("inviata") || value.includes("inviato") || value.includes("rete") || value.includes("prelev") || value.includes("preliev") || value.includes("consum");
+        return looksPv && looksProduction && !looksGridExport;
+      });
+    }
+
+    function billRowsToMonthMap(rows) {
+      const cleanRows = (rows || []).filter(row => row && row.some(value => String(value ?? "").trim()));
+      const headerIndex = cleanRows.findIndex(row => {
+        const normalized = row.map(normalizeBillHeader);
+        const hasDate = normalized.some((value, index) =>
+          value.includes("periodo") ||
+          value.includes("mese") ||
+          value.includes("data") ||
+          value.includes("anno") ||
+          yearFromValue(row[index]) > 0
+        );
+        const hasEnergy = normalized.some(value => value.includes("immess") || value.includes("prelev") || value.includes("preliev"));
+        const hasConsumption = normalized.some(value => value.includes("consum"));
+        const hasGridExport = normalized.some(value =>
+          (value.includes("inviata") || value.includes("inviato")) &&
+          (value.includes("rete") || value.includes("fv"))
+        );
+        const hasProduction = normalized.some(value =>
+          (value.includes("prodott") || value.includes("produzion") || value.includes("prodotta")) &&
+          (value.includes("fv") || value.includes("fotovoltaic"))
+        );
+        return hasDate && (hasEnergy || hasConsumption || hasGridExport || hasProduction);
+      });
+      const header = headerIndex >= 0 ? cleanRows[headerIndex] : BILL_HEADER;
+      const dataRows = headerIndex >= 0 ? cleanRows.slice(headerIndex + 1) : cleanRows;
+      const dateIndex = headerIndex >= 0
+        ? header.map(normalizeBillHeader).findIndex((value, index) =>
+          value.includes("periodo") ||
+          value.includes("mese") ||
+          value.includes("data") ||
+          value.includes("anno") ||
+          yearFromValue(header[index]) > 0
+        )
+        : 0;
+      const fallbackYear = headerIndex >= 0
+        ? (yearFromValue(header[dateIndex]) || header.reduce((year, value) => year || yearFromValue(value), 0))
+        : 0;
+      const columns = {
+        f1Export: headerIndex >= 0 ? billColumnIndex(header, "f1", "export") : 1,
+        f2Export: headerIndex >= 0 ? billColumnIndex(header, "f2", "export") : 2,
+        f3Export: headerIndex >= 0 ? billColumnIndex(header, "f3", "export") : 3,
+        f1Import: headerIndex >= 0 ? billColumnIndex(header, "f1", "import") : 4,
+        f2Import: headerIndex >= 0 ? billColumnIndex(header, "f2", "import") : 5,
+        f3Import: headerIndex >= 0 ? billColumnIndex(header, "f3", "import") : 6,
+        totalExport: headerIndex >= 0 ? billTotalExportColumnIndex(header) : -1,
+        pvProduction: headerIndex >= 0 ? billProductionColumnIndex(header) : 7
+      };
+      const map = new Map();
+      for (const row of dataRows) {
+        const monthKey = monthKeyFromValue(row[dateIndex >= 0 ? dateIndex : 0], fallbackYear);
+        if (!monthKey) continue;
+        const bucket = map.get(monthKey) || {
+          monthKey,
+          f1Export: 0,
+          f2Export: 0,
+          f3Export: 0,
+          f1Import: 0,
+          f2Import: 0,
+          f3Import: 0,
+          pvProduction: 0
+        };
+        for (const [key, index] of Object.entries(columns)) {
+          if (key !== "totalExport" && index >= 0) bucket[key] += parseNumber(row[index]) || 0;
+        }
+        if (columns.f1Export < 0 && columns.f2Export < 0 && columns.f3Export < 0 && columns.totalExport >= 0) {
+          bucket.f1Export += parseNumber(row[columns.totalExport]) || 0;
+        }
+        map.set(monthKey, bucket);
+      }
+      return map;
+    }
+
+    function normalizeBillMonthRows(map, monthLimit = 12) {
+      const rows = [...map.values()].sort((a, b) => a.monthKey.localeCompare(b.monthKey));
+      const startIndex = Math.max(0, rows.length - monthLimit);
+      const usedRows = rows.slice(startIndex);
+      const first = usedRows[0];
+      const last = usedRows[usedRows.length - 1];
+      return {
+        rows: usedRows,
+        info: {
+          inputRows: rows.length,
+          validRows: rows.length,
+          uniqueRows: rows.length,
+          usedRows: usedRows.length,
+          discardedRows: Math.max(0, rows.length - usedRows.length),
+          start: first ? first.monthKey : "",
+          end: last ? last.monthKey : ""
+        }
+      };
+    }
+
+    function billMapToCsv(map) {
+      const normalized = normalizeBillMonthRows(map);
+      const lines = [
+        BILL_HEADER.join(";"),
+        ...normalized.rows.map(row => [
+          billMonthDisplay(row.monthKey),
+          row.f1Export,
+          row.f2Export,
+          row.f3Export,
+          row.f1Import,
+          row.f2Import,
+          row.f3Import,
+          row.pvProduction
+        ].join(";"))
+      ];
+      return {
+        csv: lines.join("\n"),
+        rowCount: normalized.rows.length,
+        discardedRows: normalized.info.discardedRows
+      };
+    }
+
+    function billRowsToCsv(rows) {
+      return billMapToCsv(billRowsToMonthMap(rows));
+    }
+
+    async function fileToBillCsv(file) {
+      const name = file.name.toLowerCase();
+      if (name.endsWith(".xlsx")) {
+        const { rows } = await readXlsxRowsInBrowser(await file.arrayBuffer());
+        return { ...billRowsToCsv(rows), detected: "xlsx_browser" };
+      }
+      if (name.endsWith(".xls")) {
+        const buffer = await file.arrayBuffer();
+        const bytes = new Uint8Array(buffer);
+        if (bytes.length >= 8 && bytes[0] === 0xd0 && bytes[1] === 0xcf && bytes[2] === 0x11 && bytes[3] === 0xe0) {
+          throw new Error(`${file.name}: XLS binario non supportato dal prototipo. Salvalo come XLSX o CSV.`);
+        }
+        return { ...billRowsToCsv(parseLegacyExcelRows(new TextDecoder("utf-8").decode(bytes))), detected: "xls_html_xml" };
+      }
+      if (name.endsWith(".csv") || name.endsWith(".txt")) {
+        return { ...billRowsToCsv(delimitedTextToRows(await readTextFile(file))), detected: "csv" };
+      }
+      throw new Error(`Formato non supportato per ${file.name}. Usa CSV, TXT, XLSX oppure XLS.`);
+    }
+
+    function parseBillMonthlyRows() {
+      const map = billRowsToMonthMap(delimitedTextToRows(document.getElementById("billData").value));
+      const normalized = normalizeBillMonthRows(map);
+      state.lastAnnualWindowInfo = normalized.info;
+      return normalized.rows.map(row => {
+        const [yearText, monthText] = row.monthKey.split("-");
+        const month = Number(monthText) || 1;
+        const year = Number(yearText) || 2025;
+        return {
+          ...row,
+          date: billMonthDisplay(row.monthKey),
+          hour: 0,
+          month,
+          year,
+          importBands: {
+            F1: row.f1Import,
+            F2: row.f2Import,
+            F3: row.f3Import
+          },
+          exportBands: {
+            F1: row.f1Export,
+            F2: row.f2Export,
+            F3: row.f3Export
+          },
+          load: row.f1Import + row.f2Import + row.f3Import,
+          exportedFv1: row.f1Export + row.f2Export + row.f3Export,
+          pvProduction: row.pvProduction || 0,
+          pun: 0
+        };
+      });
+    }
+
+    function readBillPrices() {
+      return {
+        buy: {
+          F1: numberValue("billBuyF1"),
+          F2: numberValue("billBuyF2"),
+          F3: numberValue("billBuyF3")
+        },
+        sell: {
+          F1: numberValue("billSellF1"),
+          F2: numberValue("billSellF2"),
+          F3: numberValue("billSellF3")
+        }
+      };
+    }
+
+    function allocateBillBandEnergy(bands, prices, amount, ascending = true) {
+      const allocations = { F1: 0, F2: 0, F3: 0 };
+      let remaining = Math.max(0, amount);
+      const ordered = ["F1", "F2", "F3"]
+        .map(band => ({ band, energy: Math.max(0, bands[band] || 0), price: Math.max(0, prices[band] || 0) }))
+        .sort((a, b) => ascending ? a.price - b.price : b.price - a.price);
+      for (const item of ordered) {
+        if (remaining <= 0) break;
+        const take = Math.min(item.energy, remaining);
+        allocations[item.band] += take;
+        remaining -= take;
+      }
+      const total = Object.values(allocations).reduce((sum, value) => sum + value, 0);
+      const valueEuro = ["F1", "F2", "F3"].reduce((sum, band) => sum + allocations[band] * (prices[band] || 0), 0);
+      return { allocations, total, valueEuro };
+    }
+
+    function calculateBillScenario(options = {}, bess = readBessConfig()) {
+      const rows = parseBillMonthlyRows();
+      if (!rows.length) {
+        resetDashboardToZero("Nessun dato bolletta valido: carica un file F1/F2/F3 oppure compila la tabella.");
+        return state.lastSummary;
+      }
+
+      const prices = readBillPrices();
+      const costBess = numberValue("costoBess");
+      const usableCapacity = Math.max(0, bess.capacity - bess.socMin);
+      const cyclesPerDay = Math.max(0, bess.billDailyCycles || 0);
+      let totalImport = 0;
+      let totalExport = 0;
+      let totalPvProduction = 0;
+      let totalImportCostBefore = 0;
+      let totalExportRevenueBefore = 0;
+      let totalChargeFromExport = 0;
+      let totalDischargeToLoad = 0;
+      let totalStoredInternal = 0;
+      let totalPostImport = 0;
+      let totalPostExport = 0;
+      let totalSavings = 0;
+      let totalLostRevenue = 0;
+      const rendered = [];
+
+      for (const row of rows) {
+        const importTotal = row.load;
+        const exportTotal = row.exportedFv1;
+        const importCostBefore = ["F1", "F2", "F3"].reduce((sum, band) => sum + row.importBands[band] * prices.buy[band], 0);
+        const exportRevenueBefore = ["F1", "F2", "F3"].reduce((sum, band) => sum + row.exportBands[band] * prices.sell[band], 0);
+        const monthDays = daysInMonth(row.year, row.month);
+        const cycleInternalCap = usableCapacity * monthDays * cyclesPerDay;
+        const powerChargeInternalCap = Math.max(0, bess.chargePower) * 24 * monthDays * bess.etaCharge;
+        const powerDischargeOutputCap = Math.max(0, bess.dischargePower) * 24 * monthDays;
+        const internalCap = Math.max(0, Math.min(
+          cycleInternalCap || 0,
+          powerChargeInternalCap || 0,
+          powerDischargeOutputCap / Math.max(0.0001, bess.etaDischarge)
+        ));
+        const chargeInputLimit = internalCap / Math.max(0.0001, bess.etaCharge);
+        const chargeAllocation = allocateBillBandEnergy(row.exportBands, prices.sell, Math.min(exportTotal, chargeInputLimit), true);
+        const storedInternal = chargeAllocation.total * bess.etaCharge;
+        const dischargeLimit = Math.min(importTotal, storedInternal * bess.etaDischarge, powerDischargeOutputCap);
+        const dischargeAllocation = allocateBillBandEnergy(row.importBands, prices.buy, dischargeLimit, false);
+        const dischargeToLoad = dischargeAllocation.total;
+        const storedUsed = dischargeToLoad / Math.max(0.0001, bess.etaDischarge);
+        const postImport = Math.max(0, importTotal - dischargeToLoad);
+        const postExport = Math.max(0, exportTotal - chargeAllocation.total);
+        const lostRevenue = chargeAllocation.valueEuro;
+        const savings = dischargeAllocation.valueEuro;
+        const netBenefit = savings - lostRevenue;
+        const cycles = bess.capacity > 0 ? storedUsed / bess.capacity : 0;
+
+        totalImport += importTotal;
+        totalExport += exportTotal;
+        totalPvProduction += row.pvProduction || 0;
+        totalImportCostBefore += importCostBefore;
+        totalExportRevenueBefore += exportRevenueBefore;
+        totalChargeFromExport += chargeAllocation.total;
+        totalDischargeToLoad += dischargeToLoad;
+        totalStoredInternal += storedUsed;
+        totalPostImport += postImport;
+        totalPostExport += postExport;
+        totalSavings += savings;
+        totalLostRevenue += lostRevenue;
+
+        rendered.push({
+          ...row,
+          f1Import: row.importBands.F1,
+          f2Import: row.importBands.F2,
+          f3Import: row.importBands.F3,
+          f1Export: row.exportBands.F1,
+          f2Export: row.exportBands.F2,
+          f3Export: row.exportBands.F3,
+          pvProduction: row.pvProduction || 0,
+          charge: chargeAllocation.total,
+          chargeFromFv: chargeAllocation.total,
+          gridCharge: 0,
+          discharge: dischargeToLoad,
+          soc: bess.socMin,
+          socPct: socPercentValue(bess.socMin, bess.capacity),
+          postFv: importTotal,
+          postBess: postImport,
+          exportResidual: postExport,
+          surplusFv: exportTotal,
+          fv2: 0,
+          arbitrageExport: 0,
+          curtailment: 0,
+          importCostBefore,
+          exportRevenueBefore,
+          lostRevenueEuro: lostRevenue,
+          savingEuro: savings,
+          netBenefitEuro: netBenefit,
+          cycles
+        });
+      }
+
+      const totalImportCostPost = totalImportCostBefore - totalSavings;
+      const totalExportRevenuePost = totalExportRevenueBefore - totalLostRevenue;
+      const annualBessCycles = bess.capacity > 0 ? totalStoredInternal / bess.capacity : 0;
+      const annualBenefit = totalSavings - totalLostRevenue;
+      const paybackSoloBess = annualBenefit > 0 ? costBess / annualBenefit : 0;
+      const averageImportPrice = totalImport > 0 ? totalImportCostBefore / totalImport : 0;
+      const averageExportPrice = totalExport > 0 ? totalExportRevenueBefore / totalExport : 0;
+      const averageSavedPrice = totalDischargeToLoad > 0 ? totalSavings / totalDischargeToLoad : 0;
+      const averageLostPrice = totalChargeFromExport > 0 ? totalLostRevenue / totalChargeFromExport : 0;
+
+      state.lastRows = rendered;
+      state.lastSummary = {
+        generatedAt: new Date().toISOString(),
+        bessMode: "bill",
+        bessKwh: bess.capacity,
+        chargePowerKw: bess.chargePower,
+        dischargePowerKw: bess.dischargePower,
+        socMinKwh: bess.socMin,
+        socInitialKwh: bess.socInitial,
+        etaCharge: bess.etaCharge,
+        etaDischarge: bess.etaDischarge,
+        gridImportLimitKw: numberValue("gridImportLimit"),
+        gridExportLimitKw: numberValue("gridExportLimit"),
+        smartEProductKey: document.getElementById("smartEProduct").value,
+        smartEProductName: selectedSmartEProduct()?.name || "Configurazione manuale",
+        smartEProductUnits: smartEUnitsValue(),
+        smartEProductCapacityKwh: selectedSmartEProduct()?.capacityKwh || 0,
+        smartEProductPowerKw: selectedSmartEProduct()?.powerKw || 0,
+        smartEProductPriceEuroKwh: selectedSmartEProduct()?.priceEuroKwh || 0,
+        smartEProductSolution: selectedSmartEProduct()?.solution || "-",
+        billBuyF1EuroKwh: prices.buy.F1,
+        billBuyF2EuroKwh: prices.buy.F2,
+        billBuyF3EuroKwh: prices.buy.F3,
+        billSellF1EuroKwh: prices.sell.F1,
+        billSellF2EuroKwh: prices.sell.F2,
+        billSellF3EuroKwh: prices.sell.F3,
+        billDailyCycles: cyclesPerDay,
+        rowsInput: state.lastAnnualWindowInfo?.inputRows || rows.length,
+        rowsUsed: rows.length,
+        rowsDiscarded: state.lastAnnualWindowInfo?.discardedRows || 0,
+        analysisWindowStart: state.lastAnnualWindowInfo?.start || "",
+        analysisWindowEnd: state.lastAnnualWindowInfo?.end || "",
+        annualFactor: 1,
+        annualLoadKwh: totalImport,
+        annualExportedFvFileKwh: totalExport,
+        annualPvProductionKwh: totalPvProduction,
+        annualPv2Kwh: totalPvProduction,
+        annualPv2ModeledKwh: totalPvProduction,
+        annualPv2SimulatedKwh: totalPvProduction,
+        annualSurplusFvKwh: totalExport,
+        annualPostFvKwh: totalImport,
+        annualChargeFvKwh: totalChargeFromExport,
+        annualGridChargeKwh: 0,
+        annualDischargeKwh: totalDischargeToLoad,
+        annualBessCycles,
+        averageDailyBessCycles: annualBessCycles / 365,
+        annualExportWithoutBessKwh: totalExport,
+        annualLostExportForBessKwh: totalChargeFromExport,
+        annualPostBessKwh: totalPostImport,
+        annualExportKwh: totalPostExport,
+        annualCurtailmentKwh: 0,
+        annualCurrentCostEuro: totalImportCostBefore,
+        annualPostFvCostEuro: totalImportCostBefore,
+        annualPostCostEuro: totalImportCostPost,
+        annualSavingEuro: totalSavings,
+        annualFvSavingEuro: 0,
+        annualBessGrossSavingEuro: totalSavings,
+        annualBessOpportunityCostEuro: totalLostRevenue,
+        annualBessSavingEuro: annualBenefit,
+        annualExportRevenueEuro: totalExportRevenueBefore,
+        annualExportRevenuePostEuro: totalExportRevenuePost,
+        annualTotalBenefitEuro: annualBenefit,
+        investmentFvEuro: 0,
+        investmentBessEuro: costBess,
+        investmentEuro: costBess,
+        annualSoloFvBenefitEuro: 0,
+        annualBessIncrementalBenefitEuro: annualBenefit,
+        paybackSoloFvYears: 0,
+        paybackFvBessYears: paybackSoloBess,
+        paybackSoloBessYears: paybackSoloBess,
+        paybackYears: paybackSoloBess,
+        averageImportPriceEuroKwh: averageImportPrice,
+        averageExportPriceEuroKwh: averageExportPrice,
+        averageSavedPriceEuroKwh: averageSavedPrice,
+        averageLostPriceEuroKwh: averageLostPrice,
+        peakImportKw: 0
+      };
+
+      if (options.silent) return state.lastSummary;
+
+      setMetric("aPrelievo", "Energia prelevata da bolletta", kwh(totalImport));
+      setMetric("aImmessaAttuale", "Energia immessa da bolletta", kwh(totalExport));
+      setMetric("aImmessaFv", "Produzione FV", kwh(totalPvProduction));
+      setMetric("aProduzioneFv2", "Prelievo post BESS", kwh(totalPostImport));
+      setMetric("aSurplusFv", "Immessa post BESS", kwh(totalPostExport));
+      setMetric("aPostFv", "Energia caricata BESS da immessa", kwh(totalChargeFromExport));
+      setMetric("aScaricaBess", "Energia scaricata BESS", kwh(totalDischargeToLoad));
+      setMetric("aCicliBess", "Cicli BESS annui", plainNumber(annualBessCycles, "cicli/anno", 1));
+      setMetric("aPostBess", "", "-", false);
+      setMetric("aImmessaPostBess", "", "-", false);
+
+      setMetric("eCostoAttuale", "Costo prelievo ante BESS", euro(totalImportCostBefore));
+      setMetric("eCostoPostFv", "Costo prelievo post BESS", euro(totalImportCostPost));
+      setMetric("eCostoPostBess", "Risparmio su prelievo", euro(totalSavings));
+      setMetric("eRisparmioFv", "Ricavo immessa ante BESS", euro(totalExportRevenueBefore));
+      setMetric("eRisparmioBess", "Beneficio BESS netto", euro(annualBenefit));
+      setMetric("eMancatoRicavoBess", "Mancato ricavo energia usata dal BESS", euro(totalLostRevenue));
+      setMetric("eRisparmioTotale", "", "-", false);
+      setMetric("eRicavoImmessa", "", "-", false);
+      setMetric("eBeneficioTotale", "Beneficio economico annuo totale", euro(annualBenefit));
+
+      setMetric("rCostoSistema", "Investimento BESS", euro(costBess));
+      setMetric("rRicaviAnnui", "Beneficio netto annuo", euro(annualBenefit));
+      setMetric("rRisparmioAnnuale", "Tempo rientro BESS", anni(paybackSoloBess));
+      setMetric("rRientroSistema", "", "-", false);
+
+      const annualWindowText = state.lastAnnualWindowInfo?.discardedRows > 0
+        ? ` Finestra annuale ${state.lastAnnualWindowInfo.start} - ${state.lastAnnualWindowInfo.end}; scartati ${state.lastAnnualWindowInfo.discardedRows.toLocaleString("it-IT")} mesi in eccesso.`
+        : "";
+      document.getElementById("tableStatus").textContent =
+        `Mostrati ${rendered.length.toLocaleString("it-IT")} mesi calcolati.${annualWindowText}`;
+      document.getElementById("calcStatus").textContent =
+        `Calcolo bollette aggiornato: ${rendered.length.toLocaleString("it-IT")} mesi - carica BESS ${kwh(totalChargeFromExport)} - scarica ${kwh(totalDischargeToLoad)} - beneficio ${euro(annualBenefit)}.`;
+      renderHourlyPreview(rendered, bess);
+      return state.lastSummary;
+    }
+
     function mergeHourlyCsv(contents, includeOptionalPun = false) {
       const merged = new Map();
       for (const csv of contents) {
@@ -3568,11 +5521,14 @@
         return readLegacyXlsAsCsv(file);
       }
       if (name.endsWith(".csv") || name.endsWith(".txt")) {
-        const csv = await readTextFile(file);
+        const rawText = await readTextFile(file);
+        const rows = delimitedTextToRows(rawText);
+        const normalizedCsv = spreadsheetRowsToCsv(rows);
+        const csv = normalizedCsv || rawText;
         return {
           csv,
           rowCount: csvRowsForMerge(csv).length,
-          detected: "csv"
+          detected: normalizedCsv ? "csv_normalizzato" : "csv"
         };
       }
       throw new Error(`Formato non supportato per ${file.name}. Usa CSV, TXT, XLSX oppure XLS.`);
@@ -3606,6 +5562,38 @@
       }
     }
 
+    async function loadBillFiles(files) {
+      const selectedFiles = [...(files || [])];
+      const status = document.getElementById("billFileStatus");
+      if (!selectedFiles.length) return;
+      try {
+        clearDemoInputOverride();
+        status.textContent = `Lettura ${selectedFiles.length.toLocaleString("it-IT")} file bollette in corso...`;
+        const loaded = [];
+        for (const file of selectedFiles) {
+          status.textContent = `Lettura file bolletta: ${file.name}`;
+          loaded.push({ file, result: await fileToBillCsv(file) });
+        }
+        const combinedRows = [
+          BILL_HEADER,
+          ...loaded.flatMap(item => delimitedTextToRows(item.result.csv).slice(1))
+        ];
+        const merged = billRowsToCsv(combinedRows);
+        document.getElementById("billData").value = merged.csv;
+        const names = loaded.map(item => item.file.name).join(", ");
+        const inputRows = loaded.reduce((sum, item) => sum + item.result.rowCount, 0);
+        status.textContent =
+          `Caricati ${loaded.length.toLocaleString("it-IT")} file bollette: ` +
+          `${merged.rowCount.toLocaleString("it-IT")} mesi usati da ${inputRows.toLocaleString("it-IT")} mesi letti. File: ${names}`;
+        if (merged.discardedRows > 0) {
+          status.textContent += ` Scartati ${merged.discardedRows.toLocaleString("it-IT")} mesi in eccesso.`;
+        }
+        markScenarioDirty("File bollette caricati: premi Calcola scenario per aggiornare KPI, tabella e report.");
+      } catch (error) {
+        status.textContent = `Errore: ${error.message}`;
+      }
+    }
+
     async function loadPunFile(file) {
       const status = document.getElementById("punFileStatus");
       try {
@@ -3622,7 +5610,11 @@
         const average = Number.isFinite(Number(result.average)) ? Number(result.average) : averagePunMapValue();
         state.punLoadError = rowCount <= 0;
         document.getElementById("punAverage").value = average.toFixed(2);
-        status.textContent = `Caricato PUN ${document.getElementById("zone").value}: ${rowCount.toLocaleString("it-IT")} ore, media ${average.toLocaleString("it-IT", { maximumFractionDigits: 2 })} euro/MWh.`;
+        saveManualPunResult(document.getElementById("zone").value, { ...result, rowCount, average }, file.name);
+        status.textContent =
+          `Caricato PUN manuale ${document.getElementById("zone").value}: ` +
+          `${rowCount.toLocaleString("it-IT")} ore, media ${average.toLocaleString("it-IT", { maximumFractionDigits: 2 })} euro/MWh. ` +
+          `Salvato nel browser per i prossimi caricamenti.`;
         markScenarioDirty("PUN orario caricato: premi Calcola scenario per aggiornare i conteggi.");
       } catch (error) {
         state.punMap = new Map();
@@ -3643,22 +5635,27 @@
       if (options.calculateAfterLoad) state.pendingCalculateAfterPunLoad = true;
       try {
         status.textContent = `Caricamento database PUN 2025: ${zone}...`;
-        let result;
-        try {
-          const response = await fetch(`/api/pun-default?zone=${encodeURIComponent(zone)}`);
-          result = await response.json();
-          if (!response.ok || result.error) {
-            throw new Error(result.detail || result.error || "Errore database PUN");
+        let result = loadManualPunResult(zone);
+        const isManual = Boolean(result);
+        if (!result) {
+          try {
+            const response = await fetch(`/api/pun-default?zone=${encodeURIComponent(zone)}`);
+            result = await response.json();
+            if (!response.ok || result.error) {
+              throw new Error(result.detail || result.error || "Errore database PUN");
+            }
+          } catch (apiError) {
+            result = await loadDefaultPunFromStaticAsset(zone);
           }
-        } catch (apiError) {
-          result = await loadDefaultPunFromStaticAsset(zone);
         }
         state.punMap = parsePunCsv(result.csv);
         const rowCount = state.punMap.size || Number(result.rowCount) || 0;
         const average = Number.isFinite(Number(result.average)) ? Number(result.average) : averagePunMapValue();
         state.punLoadError = rowCount <= 0;
         document.getElementById("punAverage").value = average.toFixed(2);
-        status.textContent = `Database PUN 2025 caricato: ${zone}, ${rowCount.toLocaleString("it-IT")} ore, media ${average.toLocaleString("it-IT", { maximumFractionDigits: 2 })} euro/MWh.`;
+        status.textContent = isManual
+          ? `PUN manuale caricato dal browser: ${zone}, ${rowCount.toLocaleString("it-IT")} ore, media ${average.toLocaleString("it-IT", { maximumFractionDigits: 2 })} euro/MWh.`
+          : `Database PUN 2025 caricato: ${zone}, ${rowCount.toLocaleString("it-IT")} ore, media ${average.toLocaleString("it-IT", { maximumFractionDigits: 2 })} euro/MWh.`;
       } catch (error) {
         state.punMap = new Map();
         state.punLoadError = true;
@@ -3669,6 +5666,7 @@
         state.pendingCalculateAfterPunLoad = false;
         if (shouldCalculate) {
           calculate({ userTriggered: true });
+          openWizardReportIfReady();
         } else if (!state.punLoadError) {
           markScenarioDirty("Database PUN caricato: premi Calcola scenario per aggiornare i conteggi.");
         }
@@ -3700,16 +5698,30 @@
           `media ${average.toLocaleString("it-IT", { maximumFractionDigits: 2 })} euro/MWh.`;
         markScenarioDirty("PUN aggiornato da GME: premi Calcola scenario per aggiornare i conteggi.");
       } catch (error) {
-        status.textContent = `GME non aggiornato: ${error.message} Uso il database locale se gia caricato.`;
+        const manualMessage =
+          `GME automatico non aggiornato: ${error.message} ` +
+          `Aggiornamento manuale disponibile: scarica dal sito GME il file XLSX Prezzi Zonali/MGP e caricalo nel campo "File PUN zonale".`;
         if (!state.punMap.size) {
           await loadDefaultPun();
+          status.textContent = `${manualMessage} ${state.punMap.size ? "Nel frattempo e stato caricato il PUN locale disponibile." : ""}`;
         } else {
+          status.textContent = manualMessage;
           markScenarioDirty("PUN locale gia disponibile: premi Calcola scenario per aggiornare i conteggi.");
         }
       } finally {
         button.disabled = false;
-        button.textContent = "Aggiorna PUN da GME";
+        button.textContent = "Aggiorna automatico GME (API)";
       }
+    }
+
+    function openGmeManualDownload() {
+      window.open(
+        "https://gme.mercatoelettrico.org/it-it/Home/Esiti/Elettricita/MGP/Esiti/PrezziZonali#IntestazioneGrafico",
+        "_blank",
+        "noopener"
+      );
+      document.getElementById("punFileStatus").textContent =
+        "Scarica dal GME il file XLSX dei Prezzi Zonali/MGP, poi caricalo nel campo File PUN zonale.";
     }
 
     function handlePunFile(event) {
@@ -4039,6 +6051,7 @@
     }
 
     function reportData() {
+      const isHybridData = state.lastSummary?.bessMode === "hybrid";
       const byHour = Array.from({ length: 24 }, (_, hour) => ({
         hour,
         load: 0,
@@ -4048,6 +6061,7 @@
         postBess: 0,
         arbitrageExport: 0,
         export: 0,
+        pvProduction: 0,
         socPct: 0,
         count: 0
       }));
@@ -4063,6 +6077,7 @@
           bucket.postBess += row.postBess;
           bucket.arbitrageExport += row.arbitrageExport || 0;
           bucket.export += row.exportResidual;
+          bucket.pvProduction += row.pvProduction || 0;
           bucket.socPct += Number.isFinite(row.socPct)
             ? row.socPct
             : socPercentValue(row.soc, state.lastSummary?.bessKwh || numberValue("bess"));
@@ -4081,8 +6096,13 @@
             arbitrageExport: 0,
             export: 0,
             fv2: 0,
+            pvFile: 0,
+            pvProduction: 0,
             gridChargeCost: 0,
-            arbitrageRevenue: 0
+            arbitrageRevenue: 0,
+            billSaving: 0,
+            billLostRevenue: 0,
+            billNetBenefit: 0
           });
         }
         const month = byMonth.get(monthNumber);
@@ -4094,8 +6114,13 @@
         month.arbitrageExport += row.arbitrageExport || 0;
         month.export += row.exportResidual || 0;
         month.fv2 += row.fv2 || 0;
+        month.pvFile += isHybridData ? (row.exportedFv1 || 0) : 0;
+        month.pvProduction += row.pvProduction || 0;
         month.gridChargeCost += energyValueFromEuroMwh(row.gridCharge || 0, row.pun || 0);
         month.arbitrageRevenue += energyValueFromEuroMwh(row.arbitrageExport || 0, row.pun || 0);
+        month.billSaving += row.savingEuro || 0;
+        month.billLostRevenue += row.lostRevenueEuro || 0;
+        month.billNetBenefit += row.netBenefitEuro || 0;
       }
 
       const hourly = byHour.map(item => ({
@@ -4107,6 +6132,7 @@
         postBess: item.count ? item.postBess / item.count : 0,
         arbitrageExport: item.count ? item.arbitrageExport / item.count : 0,
         export: item.count ? item.export / item.count : 0,
+        pvProduction: item.count ? item.pvProduction / item.count : 0,
         socPct: item.count ? item.socPct / item.count : 0
       }));
       const monthLabels = ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"];
@@ -4125,8 +6151,13 @@
               arbitrageExport: 0,
               export: 0,
               fv2: 0,
+              pvFile: 0,
+              pvProduction: 0,
               gridChargeCost: 0,
-              arbitrageRevenue: 0
+              arbitrageRevenue: 0,
+              billSaving: 0,
+              billLostRevenue: 0,
+              billNetBenefit: 0
             });
           }
           byMonth.get(monthNumber).fv2 += value;
@@ -4144,8 +6175,13 @@
           arbitrageExport: 0,
           export: 0,
           fv2: 0,
+          pvFile: 0,
+          pvProduction: 0,
           gridChargeCost: 0,
-          arbitrageRevenue: 0
+          arbitrageRevenue: 0,
+          billSaving: 0,
+          billLostRevenue: 0,
+          billNetBenefit: 0
         };
         return {
           ...item,
@@ -4161,6 +6197,7 @@
       const { hourly, monthly } = reportData();
       const isArbitrageReport = s.bessMode === "arbitrage";
       const isHybridReport = s.bessMode === "hybrid";
+      const isBillReport = s.bessMode === "bill";
       const annualSaleRevenue = isArbitrageReport
         ? (s.annualArbitrageRevenueEuro || 0)
         : (Number.isFinite(s.annualSaleRevenueEuro)
@@ -4245,10 +6282,12 @@
         `<div class="card setting-card"><div class="label">${label}</div><div class="value">${value}</div></div>`;
       const pvModelName = s.pvModelLabel || pvModelLabel(s.pvModel);
       const isPvgisReportModel = s.pvModel === "pvgis-grid" || s.pvModel === "pvgis-tracking" || s.pvModel === "pvgis";
-      const priceInfo = s.priceMode === "pun"
+      const priceInfo = isBillReport
+        ? "Fasce bolletta F1/F2/F3"
+        : s.priceMode === "pun"
         ? `PUN ${s.punZone || "-"}`
         : reportEuroPerKwh(s.fixedPriceEuroKwh || 0);
-      const pvSettingCards = isArbitrageReport
+      const pvSettingCards = isArbitrageReport || isBillReport
         ? []
         : [
           settingCard("Potenza FV nuovo", reportNumberUnit(s.fvKwp || 0, "kWp", 0)),
@@ -4288,14 +6327,20 @@
             settingCard("Tipologia prodotto", s.smartEProductSolution || "-")
           ]
           : []),
-        settingCard("Modalita operativa BESS", isArbitrageReport ? "Arbitraggio PUN" : (isHybridReport ? "Ibrido FV + BESS" : "C&I autoconsumo")),
+        settingCard("Modalita operativa BESS", isArbitrageReport ? "Arbitraggio PUN" : (isHybridReport ? "Ibrido FV + BESS" : (isBillReport ? "Da bollette F1-F2-F3" : "C&I autoconsumo"))),
         settingCard("Capacita BESS", reportKwh(s.bessKwh || 0)),
         settingCard("Potenza carica / scarica", `${reportNumberUnit(s.chargePowerKw || 0, "kW", 0)} / ${reportNumberUnit(s.dischargePowerKw || 0, "kW", 0)}`),
         settingCard("SOC minimo / iniziale", `${reportPercent((s.socMinKwh || 0) / Math.max(1, s.bessKwh || 0) * 100)} / ${reportPercent((s.socInitialKwh || 0) / Math.max(1, s.bessKwh || 0) * 100)}`),
         settingCard("Efficienza carica / scarica", `${reportPercent((s.etaCharge || 0) * 100)} / ${reportPercent((s.etaDischarge || 0) * 100)}`),
         settingCard("Limite prelievo / immissione", `${reportNumberUnit(s.gridImportLimitKw || 0, "kW", 0)} / ${reportNumberUnit(s.gridExportLimitKw || 0, "kW", 0)}`),
         settingCard("Prezzo energia", priceInfo),
-        ...(!isArbitrageReport && !isHybridReport
+        ...(isBillReport
+          ? [
+            settingCard("Prezzi acquisto F1/F2/F3", `${reportEuroPerKwh(s.billBuyF1EuroKwh || 0)} / ${reportEuroPerKwh(s.billBuyF2EuroKwh || 0)} / ${reportEuroPerKwh(s.billBuyF3EuroKwh || 0)}`),
+            settingCard("Valori immessa F1/F2/F3", `${reportEuroPerKwh(s.billSellF1EuroKwh || 0)} / ${reportEuroPerKwh(s.billSellF2EuroKwh || 0)} / ${reportEuroPerKwh(s.billSellF3EuroKwh || 0)}`)
+          ]
+          : []),
+        ...(!isArbitrageReport && !isHybridReport && !isBillReport
           ? [settingCard("Valore energia immessa", reportEuroPerKwh(s.exportSalePriceEuroKwh || 0))]
           : []),
         ...(isArbitrageReport || isHybridReport
@@ -4319,9 +6364,17 @@
         : annualFvBessBenefitForChart - annualSoloFvBenefitForChart;
       const twentyYearSoloFvValues = twentyYearLabels.map((_, year) => -investmentSoloFvForChart + annualSoloFvBenefitForChart * year);
       const twentyYearFvBessValues = twentyYearLabels.map((_, year) => -investmentFvBessForChart + annualFvBessBenefitForChart * year);
+      const twentyYearBillValues = twentyYearLabels.map((_, year) => -investmentBessForChart + (s.annualTotalBenefitEuro || 0) * year);
       const twentyYearSoloFvResult = twentyYearSoloFvValues[20] || 0;
       const twentyYearFvBessResult = twentyYearFvBessValues[20] || 0;
-      const energyCards = isArbitrageReport ? `
+      const energyCards = isBillReport ? `
+      <div class="card"><div class="label">Produzione FV</div><div class="value">${reportKwh(s.annualPvProductionKwh || 0)}</div></div>
+      <div class="card"><div class="label">Energia prelevata da bolletta</div><div class="value">${reportKwh(s.annualLoadKwh || 0)}</div></div>
+      <div class="card"><div class="label">Energia immessa da bolletta</div><div class="value">${reportKwh(s.annualExportedFvFileKwh || 0)}</div></div>
+      <div class="card"><div class="label">Energia caricata BESS da immessa</div><div class="value">${reportKwh(s.annualChargeFvKwh || 0)}</div></div>
+      <div class="card"><div class="label">Energia scaricata BESS</div><div class="value">${reportKwh(s.annualDischargeKwh || 0)}</div></div>
+      <div class="card"><div class="label">Cicli BESS annui</div><div class="value">${reportNumberUnit(s.annualBessCycles || 0, "cicli/anno", 1)}</div></div>`
+        : isArbitrageReport ? `
       <div class="card"><div class="label">Energia caricata BESS</div><div class="value">${reportKwh(s.annualGridChargeKwh || 0)}</div></div>
       <div class="card"><div class="label">Energia venduta BESS</div><div class="value">${reportKwh(s.annualArbitrageExportKwh || 0)}</div></div>
       <div class="card"><div class="label">Cicli BESS annui</div><div class="value">${reportNumberUnit(s.annualBessCycles || 0, "cicli/anno", 1)}</div></div>`
@@ -4335,7 +6388,13 @@
       <div class="card"><div class="label">Prelievo rete post FV+BESS</div><div class="value">${reportKwh(s.annualPostBessKwh)}</div></div>
       <div class="card"><div class="label">Energia scaricata BESS</div><div class="value">${reportKwh(s.annualDischargeKwh)}</div></div>
       <div class="card"><div class="label">Cicli BESS annui</div><div class="value">${reportNumberUnit(s.annualBessCycles || 0, "cicli/anno", 1)}</div></div>`;
-      const euroCards = isArbitrageReport ? `
+      const euroCards = isBillReport ? `
+      <div class="card"><div class="label">Costo prelievo ante BESS</div><div class="value">${reportEuro(s.annualCurrentCostEuro || 0)}</div></div>
+      <div class="card"><div class="label">Costo prelievo post BESS</div><div class="value">${reportEuro(s.annualPostCostEuro || 0)}</div></div>
+      <div class="card"><div class="label">Ricavo immessa ante BESS</div><div class="value">${reportEuro(s.annualExportRevenueEuro || 0)}</div></div>
+      <div class="card"><div class="label">Mancato ricavo immessa usata</div><div class="value">${reportEuro(s.annualBessOpportunityCostEuro || 0)}</div></div>
+      <div class="card"><div class="label">Beneficio BESS netto</div><div class="value">${reportEuro(s.annualTotalBenefitEuro || 0)}</div></div>`
+        : isArbitrageReport ? `
       <div class="card"><div class="label">Costo ricarica BESS</div><div class="value">${reportEuro(s.annualGridChargeCostEuro || 0)}</div></div>
       <div class="card"><div class="label">Ricavi vendita BESS</div><div class="value">${reportEuro(s.annualArbitrageRevenueEuro || 0)}</div></div>
       <div class="card"><div class="label">Margine netto annuo</div><div class="value">${reportEuro(annualArbitrageNetRevenue)}</div></div>
@@ -4352,7 +6411,11 @@
       <div class="card"><div class="label">Risparmio annuo energia</div><div class="value">${reportEuro(s.annualSavingEuro)}</div></div>
       <div class="card"><div class="label">Mancato ricavo energia usata dal BESS</div><div class="value">${reportEuro(s.annualBessOpportunityCostEuro || 0)}</div></div>
       <div class="card"><div class="label">Beneficio annuo totale</div><div class="value">${reportEuro(s.annualTotalBenefitEuro)}</div></div>`;
-      const roiCards = isArbitrageReport ? `
+      const roiCards = isBillReport ? `
+      <div class="card"><div class="label">Investimento BESS</div><div class="value">${reportEuro(s.investmentEuro || 0)}</div></div>
+      <div class="card"><div class="label">Beneficio netto annuo</div><div class="value">${reportEuro(s.annualTotalBenefitEuro || 0)}</div></div>
+      <div class="card"><div class="label">Tempo rientro BESS</div><div class="value">${reportYears(s.paybackSoloBessYears || s.paybackYears)}</div></div>`
+        : isArbitrageReport ? `
       <div class="card"><div class="label">Investimento BESS</div><div class="value">${reportEuro(s.investmentEuro)}</div></div>
       <div class="card"><div class="label">Margine annuo netto</div><div class="value">${reportEuro(annualArbitrageNetRevenue)}</div></div>
       <div class="card"><div class="label">Tempo rientro BESS</div><div class="value">${reportYears(s.paybackSoloBessYears || s.paybackYears)}</div></div>`
@@ -4368,9 +6431,82 @@
       <div class="card"><div class="label">Risultato 20 anni solo FV</div><div class="value">${reportEuro(twentyYearSoloFvResult)}</div></div>
       <div class="card"><div class="label">Risultato 20 anni FV + BESS</div><div class="value">${reportEuro(twentyYearFvBessResult)}</div></div>`;
       const kpiCards = `${energyCards}${euroCards}${roiCards}`;
+      const kpiDash = `<span class="kpi-empty">-</span>`;
+      const kpiCell = value => `<div class="kpi-cell"><strong>${value}</strong></div>`;
+      const kpiLinearRow = (label, fvValue, bessValue, combinedValue) => `
+        <div class="kpi-matrix-row">
+          <div class="kpi-metric-label">${label}</div>
+          ${kpiCell(fvValue)}
+          ${kpiCell(bessValue)}
+          ${kpiCell(combinedValue)}
+        </div>`;
+      const isCiReport = !isArbitrageReport && !isHybridReport && !isBillReport;
+      const fvFileEnergyReport = s.annualExportedFvFileKwh || 0;
+      const newFvProductionReport = s.annualPv2Kwh || 0;
+      const totalFvProductionReport = isHybridReport
+        ? fvFileEnergyReport + newFvProductionReport
+        : newFvProductionReport;
+      const bessChargeFromFvReport = s.annualChargeFvKwh || 0;
+      const bessChargeFromGridReport = s.annualGridChargeKwh || 0;
+      const bessChargeCostFromFvReport = s.annualBessOpportunityCostEuro || 0;
+      const bessChargeCostFromGridReport = s.annualGridChargeCostEuro || 0;
+      const exportWithoutBessReport = Number.isFinite(s.annualExportWithoutBessKwh)
+        ? s.annualExportWithoutBessKwh
+        : fvFileEnergyReport + Math.max(0, newFvProductionReport - Math.max(0, (s.annualLoadKwh || 0) - (s.annualPostFvKwh || 0)));
+      const exportWithBessReport = s.annualExportKwh || 0;
+      const soloFvDirectOrAvoidedReport = isHybridReport
+        ? (Number.isFinite(s.annualExportWithoutBessKwh) ? s.annualExportWithoutBessKwh : (s.annualSoloFvRevenueKwh || 0))
+        : Math.max(0, (s.annualLoadKwh || 0) - (s.annualPostFvKwh || 0));
+      const fvDirectOrAvoidedWithBessReport = isHybridReport
+        ? (s.annualExportKwh || 0)
+        : soloFvDirectOrAvoidedReport;
+      const bessOutputEnergyReport = isHybridReport
+        ? (s.annualArbitrageExportKwh || 0)
+        : (s.annualDischargeKwh || 0);
+      const totalSaleWithBessReport = Number.isFinite(s.annualFvWithBessRevenueKwh)
+        ? s.annualFvWithBessRevenueKwh
+        : fvDirectOrAvoidedWithBessReport + bessOutputEnergyReport;
+      const twentyYearBessResult = -investmentBessForChart + annualBessIncrementalBenefitReport * 20;
+      const kpiComparison = `
+        <section class="kpi-matrix">
+          <div class="kpi-matrix-header">
+            <div>KPI</div>
+            <div>FV</div>
+            <div>BESS</div>
+            <div>FV + BESS</div>
+          </div>
+          ${isCiReport ? kpiLinearRow("Prelievo rete cliente attuale", reportKwh(s.annualLoadKwh || 0), reportKwh(s.annualLoadKwh || 0), reportKwh(s.annualLoadKwh || 0)) : ""}
+          ${kpiLinearRow(isCiReport ? "Produzione FV nuova" : "Produzione FV totale", reportKwh(totalFvProductionReport), kpiDash, reportKwh(totalFvProductionReport))}
+          ${isCiReport ? kpiLinearRow("Energia immessa in rete", reportKwh(exportWithoutBessReport), kpiDash, reportKwh(exportWithBessReport)) : ""}
+          ${kpiLinearRow(isHybridReport ? "Vendita FV diretta a rete" : "Prelievo evitato da FV", reportKwh(soloFvDirectOrAvoidedReport), kpiDash, reportKwh(fvDirectOrAvoidedWithBessReport))}
+          ${kpiLinearRow(isHybridReport ? "Vendita BESS a rete" : "Energia scaricata BESS", kpiDash, reportKwh(bessOutputEnergyReport), reportKwh(bessOutputEnergyReport))}
+          ${isHybridReport ? kpiLinearRow("Energia venduta totale a rete", reportKwh(soloFvDirectOrAvoidedReport), reportKwh(bessOutputEnergyReport), reportKwh(totalSaleWithBessReport)) : ""}
+          ${kpiLinearRow("Energia caricata BESS da FV", kpiDash, reportKwh(bessChargeFromFvReport), reportKwh(bessChargeFromFvReport))}
+          ${kpiLinearRow("Energia caricata BESS da rete", kpiDash, reportKwh(bessChargeFromGridReport), reportKwh(bessChargeFromGridReport))}
+          ${kpiLinearRow("Costo ricarica BESS da FV", kpiDash, reportEuro(bessChargeCostFromFvReport), reportEuro(bessChargeCostFromFvReport))}
+          ${kpiLinearRow("Costo ricarica BESS da rete", kpiDash, reportEuro(bessChargeCostFromGridReport), reportEuro(bessChargeCostFromGridReport))}
+          ${kpiLinearRow("Cicli BESS annui", kpiDash, reportNumberUnit(s.annualBessCycles || 0, "cicli/anno", 1), reportNumberUnit(s.annualBessCycles || 0, "cicli/anno", 1))}
+          ${kpiLinearRow("Beneficio / ricavi annui", reportEuro(annualSoloFvBenefitForChart || s.annualSoloFvRevenueEuro || 0), reportEuro(annualBessIncrementalBenefitReport), reportEuro(annualFvBessBenefitForChart))}
+          ${kpiLinearRow("Ricavo medio", reportEuroPerKwh(soloFvRevenuePerKwhReport), kpiDash, reportEuroPerKwh(fvWithBessRevenuePerKwhReport))}
+          ${kpiLinearRow("Investimento", reportEuro(investmentSoloFvForChart), reportEuro(investmentBessForChart), reportEuro(investmentFvBessForChart))}
+          ${kpiLinearRow("Tempo di rientro", reportYears(s.paybackSoloFvYears), reportYears(s.paybackSoloBessYears), reportYears(s.paybackFvBessYears))}
+          ${kpiLinearRow("Risultato a 20 anni", reportEuro(twentyYearSoloFvResult), reportEuro(twentyYearBessResult), reportEuro(twentyYearFvBessResult))}
+        </section>`;
+      const kpiContent = isBillReport || isArbitrageReport
+        ? `<div class="grid kpi-grid">${kpiCards}</div>`
+        : kpiComparison;
       const postFvReduction = s.annualLoadKwh > 0 ? (1 - s.annualPostFvKwh / s.annualLoadKwh) * 100 : 0;
       const postBessReduction = s.annualLoadKwh > 0 ? (1 - s.annualPostBessKwh / s.annualLoadKwh) * 100 : 0;
-      const economicOverview = isArbitrageReport
+      const economicOverview = isBillReport
+        ? reportHorizontalBarChart([
+          { label: "Costo prelievo ante BESS", value: s.annualCurrentCostEuro || 0, color: "#9a3412" },
+          { label: "Costo prelievo post BESS", value: s.annualPostCostEuro || 0, color: "#2f5d8c" },
+          { label: "Risparmio prelievo", value: s.annualSavingEuro || 0, color: "#0f766e" },
+          { label: "Costo ricarica da FV", value: s.annualBessOpportunityCostEuro || 0, color: "#d97706" },
+          { label: "Costo ricarica da rete", value: s.annualGridChargeCostEuro || 0, color: "#64748b" },
+          { label: "Beneficio netto", value: s.annualTotalBenefitEuro || 0, color: "#0f766e" }
+        ], reportEuro)
+        : isArbitrageReport
         ? reportHorizontalBarChart([
           { label: "Costo ricarica", value: s.annualGridChargeCostEuro || 0, color: "#9a3412" },
           { label: "Ricavi vendita", value: s.annualArbitrageRevenueEuro || 0, color: "#2f5d8c" },
@@ -4381,16 +6517,27 @@
             { label: "Ricavi solo FV", value: s.annualSoloFvRevenueEuro || 0, color: "#94a3b8" },
             { label: "Ricavi FV + BESS", value: annualSaleRevenue, color: "#2f5d8c" },
             { label: "Extra beneficio BESS", value: annualFvBessRevenueDelta, color: "#0f766e" },
+            { label: "Costo ricarica da FV", value: s.annualBessOpportunityCostEuro || 0, color: "#d97706" },
             { label: "Costo ricarica da rete", value: s.annualGridChargeCostEuro || 0, color: "#9a3412" }
           ], reportEuro)
           : reportHorizontalBarChart([
             { label: "Costo energia attuale", value: s.annualCurrentCostEuro || 0, color: "#9a3412" },
             { label: "Costo post FV+BESS", value: s.annualPostCostEuro || 0, color: "#2f5d8c" },
             { label: "Risparmio annuo", value: s.annualSavingEuro || 0, color: "#0f766e" },
-            { label: "Mancato ricavo BESS", value: s.annualBessOpportunityCostEuro || 0, color: "#d97706" },
+            { label: "Costo ricarica da FV", value: s.annualBessOpportunityCostEuro || 0, color: "#d97706" },
+            { label: "Costo ricarica da rete", value: s.annualGridChargeCostEuro || 0, color: "#64748b" },
             { label: "Beneficio totale", value: s.annualTotalBenefitEuro || 0, color: "#d97706" }
           ], reportEuro);
-      const energyOverview = isArbitrageReport
+      const energyOverview = isBillReport
+        ? reportHorizontalBarChart([
+          { label: "Produzione FV", value: s.annualPvProductionKwh || 0, color: "#d97706" },
+          { label: "Prelievo bolletta", value: s.annualLoadKwh || 0, color: "#9a3412" },
+          { label: "Prelievo post BESS", value: s.annualPostBessKwh || 0, color: "#0f766e" },
+          { label: "Immessa bolletta", value: s.annualExportedFvFileKwh || 0, color: "#94a3b8" },
+          { label: "Immessa post BESS", value: s.annualExportKwh || 0, color: "#2f5d8c" },
+          { label: "Scarica BESS", value: s.annualDischargeKwh || 0, color: "#d97706" }
+        ], reportKwh)
+        : isArbitrageReport
         ? reportHorizontalBarChart([
           { label: "Energia caricata", value: s.annualGridChargeKwh || 0, color: "#2f5d8c" },
           { label: "Energia venduta", value: s.annualArbitrageExportKwh || 0, color: "#0f766e" }
@@ -4408,10 +6555,24 @@
             { label: "Prelievo post BESS", value: s.annualPostBessKwh || 0, color: "#0f766e" },
             { label: "Energia scaricata BESS", value: s.annualDischargeKwh || 0, color: "#2f5d8c" }
           ], reportKwh);
-      const monthlyChartTitle = isHybridReport
+      const monthlyChartTitle = isBillReport
+        ? "Bilancio mensile da bollette"
+        : isHybridReport
         ? "Vendite mensili FV e BESS"
         : "Andamento mensile prelievi";
-      const monthlyChart = isHybridReport
+      const monthlyChart = isBillReport
+        ? reportLineChart(
+          monthly.map(item => item.label),
+          [
+            { name: "Produzione FV", values: monthly.map(item => item.pvProduction || 0) },
+            { name: "Prelievo bolletta", values: monthly.map(item => item.load || 0) },
+            { name: "Prelievo post BESS", values: monthly.map(item => item.postBess || 0) },
+            { name: "Immessa post BESS", values: monthly.map(item => item.export || 0) }
+          ],
+          ["#d97706", "#9a3412", "#0f766e", "#2f5d8c"],
+          "kWh"
+        )
+        : isHybridReport
         ? reportLineChart(
           monthly.map(item => item.label),
           [
@@ -4430,16 +6591,27 @@
           ["#9a3412", "#0f766e"],
           "kWh"
         );
-      const monthlyFvChart = isArbitrageReport ? "" : reportColumnChart(
+      const monthlyFvValues = monthly.map(item => (item.fv2 || 0) + (isHybridReport ? (item.pvFile || 0) : 0));
+      const hasMonthlyFvChart = !isArbitrageReport && !isBillReport && monthlyFvValues.some(value => safeNumber(value) > 0.01);
+      const monthlyFvChart = !hasMonthlyFvChart ? "" : reportColumnChart(
         monthly.map(item => item.label),
         [
-          { name: "Produzione FV mensile", values: monthly.map(item => item.fv2 || 0) }
+          { name: "Produzione FV mensile", values: monthlyFvValues }
         ],
         ["#d97706"],
         "kWh",
         value => `${Math.round(safeNumber(value) / 1000).toLocaleString("it-IT")} MWh`
       );
-      const twentyYearGainChart = reportFinancialLineChart(
+      const twentyYearGainChart = isBillReport
+        ? reportFinancialLineChart(
+          twentyYearLabels,
+          [
+            { name: "BESS da bollette", values: twentyYearBillValues }
+          ],
+          ["#0f766e"],
+          "EUR"
+        )
+        : reportFinancialLineChart(
         twentyYearLabels,
         [
           { name: "Solo FV", values: twentyYearSoloFvValues },
@@ -4448,7 +6620,7 @@
         ["#d97706", "#0f766e"],
         "EUR"
       );
-      const reductionNotes = isHybridReport ? "" : `
+      const reductionNotes = isHybridReport || isBillReport ? "" : `
           <div class="chart-notes">
             <span>Riduzione prelievo post FV: ${reportPercent(postFvReduction)}</span>
             <span>Riduzione prelievo post BESS: ${reportPercent(postBessReduction)}</span>
@@ -4466,7 +6638,15 @@
         1,
         (s.gridImportLimitKw || 0) / 1000
       );
-      const bessProfileChart = isArbitrageReport ? reportDualAxisLineChart(
+      const bessProfileChart = isBillReport ? reportLineChart(
+        monthly.map(item => item.label),
+        [
+          { name: "Carica BESS da immessa", values: monthly.map(item => item.charge || 0) },
+          { name: "Scarica BESS su prelievo", values: monthly.map(item => item.discharge || 0) }
+        ],
+        ["#2563eb", "#dc2626"],
+        "kWh"
+      ) : isArbitrageReport ? reportDualAxisLineChart(
         hourly.map(item => item.hour),
         [
           { name: "Potenza media carica BESS", values: hourly.map(item => item.charge / 1000) },
@@ -4475,8 +6655,8 @@
         [
           { name: "SOC medio", values: hourly.map(item => item.socPct) }
         ],
-        ["#2f5d8c", "#9a3412"],
-        ["#d97706"],
+        ["#2563eb", "#dc2626"],
+        ["#f59e0b"],
         "MW",
         "%",
         "Potenza media BESS",
@@ -4502,8 +6682,8 @@
         [
           { name: "SOC medio", values: hourly.map(item => item.socPct) }
         ],
-        ["#2f5d8c", "#0f766e"],
-        ["#d97706"],
+        ["#2563eb", "#dc2626"],
+        ["#f59e0b"],
         "MW",
         "%",
         "Potenza media BESS",
@@ -4528,14 +6708,16 @@
         [
           { name: "Produzione FV2", values: hourly.map(item => item.fv2) }
         ],
-        ["#64748b", "#2f5d8c"],
-        ["#d97706"],
+        ["#dc2626", "#2563eb"],
+        ["#f59e0b"],
         "kWh",
         "kWh",
         "Prelievo rete",
         "Produzione FV2"
       );
-      const bessProfileTitle = isArbitrageReport || isHybridReport
+      const bessProfileTitle = isBillReport
+        ? "Energia BESS mensile da bollette"
+        : isArbitrageReport || isHybridReport
         ? "Profilo medio BESS e SOC"
         : "Profilo medio C&I: prelievo rete, post BESS e FV2";
       const arbitrageSummary = isArbitrageReport ? `
@@ -4575,10 +6757,24 @@
         </div>
       </div>
     </section>` : "";
-      const hourlyTableHead = isArbitrageReport
+      const hourlyTableHead = isBillReport
+        ? "<tr><th>Mese</th><th>Produzione FV</th><th>Prelievo</th><th>Immessa</th><th>Carica BESS</th><th>Scarica BESS</th><th>Prelievo post BESS</th><th>Immessa post BESS</th><th>Beneficio netto</th></tr>"
+        : isArbitrageReport
         ? "<tr><th>Ora</th><th>Carica BESS da rete</th><th>Scarica BESS</th><th>Vendita BESS a rete</th><th>Post BESS</th><th>SOC medio [%]</th></tr>"
         : "<tr><th>Ora</th><th>Prelievo</th><th>FV2</th><th>Carica BESS</th><th>Scarica BESS</th><th>Post BESS</th><th>Immessa</th><th>SOC medio [%]</th></tr>";
-      const hourlyTableRows = hourly.map(item => isArbitrageReport
+      const hourlyTableRows = isBillReport
+        ? monthly.map(item => `<tr>
+          <td>${item.label}</td>
+          <td>${reportKwh(item.pvProduction || 0)}</td>
+          <td>${reportKwh(item.load)}</td>
+          <td>${reportKwh((item.export || 0) + (item.charge || 0))}</td>
+          <td>${reportKwh(item.charge)}</td>
+          <td>${reportKwh(item.discharge)}</td>
+          <td>${reportKwh(item.postBess)}</td>
+          <td>${reportKwh(item.export)}</td>
+          <td>${reportEuro(item.billNetBenefit || 0)}</td>
+        </tr>`).join("")
+        : hourly.map(item => isArbitrageReport
         ? `<tr>
           <td>${item.hour}</td>
           <td>${reportKwh(item.charge)}</td>
@@ -4597,21 +6793,17 @@
           <td>${reportKwh(item.export)}</td>
           <td>${reportPercent(item.socPct)}</td>
         </tr>`).join("");
-      const reportTitle = isArbitrageReport ? "Riepilogo KPI Arbitraggio PUN" : "Report KPI FV + BESS";
+      const reportTitle = isBillReport ? "Report KPI BESS da Bollette" : (isArbitrageReport ? "Riepilogo KPI Arbitraggio PUN" : "Report KPI FV + BESS");
       const reportMain = isArbitrageReport ? `
     <div class="print-page">
       ${plantSettingsSection}
       ${arbitrageSummary}
     </div>` : `
-    <div class="print-page report-settings-page">
+    <div class="print-page report-cover-page">
       ${plantSettingsSection}
-    </div>
 
-    <div class="print-page report-kpi-page">
       <h2>KPI principali</h2>
-      <div class="grid kpi-grid">
-        ${kpiCards}
-      </div>
+      ${kpiContent}
     </div>
 
     <div class="print-page report-summary-page">
@@ -4629,21 +6821,24 @@
       <section>${monthlyChart}</section>
     </div>
 
-    ${isArbitrageReport ? "" : `
+    ${hasMonthlyFvChart ? `
     <div class="print-page report-chart-page">
       <h2>Produzione FV mensile</h2>
       <section>${monthlyFvChart}</section>
-    </div>`}
+    </div>` : ""}
 
     <div class="print-page report-chart-page">
       <h2>Guadagni cumulati a 20 anni</h2>
       <section>
         ${twentyYearGainChart}
         <div class="chart-notes">
-          <span>Solo FV: investimento ${reportEuro(investmentSoloFvForChart)} / beneficio annuo ${reportEuro(annualSoloFvBenefitForChart)}</span>
+          ${isBillReport
+            ? `<span>BESS: investimento ${reportEuro(investmentBessForChart)} / beneficio annuo ${reportEuro(s.annualTotalBenefitEuro || 0)}</span>
+          <span>Saldo a 20 anni: ${reportEuro(twentyYearBillValues[20])}</span>`
+            : `<span>Solo FV: investimento ${reportEuro(investmentSoloFvForChart)} / beneficio annuo ${reportEuro(annualSoloFvBenefitForChart)}</span>
           <span>Extra BESS: investimento ${reportEuro(investmentBessForChart)} / beneficio annuo ${reportEuro(annualBessIncrementalBenefitReport)}</span>
           <span>FV + BESS: investimento ${reportEuro(investmentFvBessForChart)} / beneficio annuo ${reportEuro(annualFvBessBenefitForChart)}</span>
-          <span>Saldo a 20 anni: Solo FV ${reportEuro(twentyYearSoloFvValues[20])} - FV + BESS ${reportEuro(twentyYearFvBessValues[20])}</span>
+          <span>Saldo a 20 anni: Solo FV ${reportEuro(twentyYearSoloFvValues[20])} - FV + BESS ${reportEuro(twentyYearFvBessValues[20])}</span>`}
         </div>
       </section>
     </div>
@@ -4654,7 +6849,7 @@
     </div>
 
     <div class="print-page">
-      <h2>Profilo Medio per Ora</h2>
+      <h2>${isBillReport ? "Riepilogo mensile da bollette" : "Profilo Medio per Ora"}</h2>
       <table>
         <thead>${hourlyTableHead}</thead>
         <tbody>${hourlyTableRows}</tbody>
@@ -4680,6 +6875,17 @@
     .print-page { margin-bottom: 18px; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
     .kpi-grid { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+    .kpi-matrix { padding: 0; overflow: hidden; }
+    .kpi-matrix-header,
+    .kpi-matrix-row { display: grid; grid-template-columns: minmax(190px, 0.95fr) repeat(3, minmax(0, 1fr)); }
+    .kpi-matrix-header { background: #11231f; color: white; font-weight: 800; }
+    .kpi-matrix-header div { padding: 12px 14px; border-right: 1px solid rgba(255, 255, 255, 0.18); }
+    .kpi-matrix-row { border-top: 1px solid #d9dfd7; }
+    .kpi-metric-label,
+    .kpi-cell { min-height: 58px; padding: 11px 14px; display: flex; align-items: center; border-right: 1px solid #e2e8df; }
+    .kpi-metric-label { color: #475569; font-size: 12px; font-weight: 800; background: #f7f9f6; line-height: 1.25; }
+    .kpi-cell strong { color: #2f5d8c; font-size: 19px; font-weight: 750; line-height: 1.1; overflow-wrap: anywhere; }
+    .kpi-empty { color: #94a3b8; font-size: 18px; font-weight: 800; }
     .card, section { background: white; border: 1px solid #d9dfd7; border-radius: 8px; padding: 14px; }
     .settings-grid { grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); }
     .setting-card .value { font-size: 18px; line-height: 1.2; }
@@ -4728,23 +6934,45 @@
     th:first-child, td:first-child { text-align: left; }
     th { color: #64748b; background: #f7f9f6; }
     @media print {
-      @page { size: 297mm 210mm; margin: 8mm; }
-      html, body { width: 297mm; min-height: 210mm; }
+      @page { size: A4 landscape; margin: 10mm; }
+      html, body { width: auto; min-height: auto; margin: 0; }
       body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      header { padding: 14px 0 12px; border-bottom: 3px solid #0f766e; }
-      main { max-width: none; padding: 0; }
+      header { margin: 0 0 6mm; padding: 0 0 4mm; border-bottom: 3px solid #0f766e; background: white; color: #11231f; }
+      main { width: 100%; max-width: none; margin: 0; padding: 0; }
       h1 { font-size: 22px; }
       h2 { margin: 16px 0 8px; break-after: avoid; page-break-after: avoid; }
       h3 { break-after: avoid; page-break-after: avoid; }
-      .subtitle { font-size: 12px; }
+      .subtitle { font-size: 12px; color: #475569; }
       .report-toolbar { display: none !important; }
-      .print-page { width: 281mm; min-height: 194mm; break-after: page; page-break-after: always; margin-bottom: 0; }
+      .print-page { width: 100%; min-height: 0; margin: 0; padding: 0; overflow: visible; break-after: page; page-break-after: always; }
       .print-page:last-child { break-after: auto; page-break-after: auto; }
-      .arb-summary, section { break-inside: auto; page-break-inside: auto; }
-      .card, .arb-item, .line-chart, .column-chart, .hbar-chart, .chart { break-inside: avoid; page-break-inside: avoid; }
+      .report-summary-page, .report-chart-page, .report-kpi-page, .report-settings-page, .report-cover-page { break-inside: avoid; page-break-inside: avoid; }
+      .arb-summary, section { break-inside: avoid; page-break-inside: avoid; }
+      .card, .arb-item, .line-chart, .column-chart, .hbar-chart, .chart, table { break-inside: avoid; page-break-inside: avoid; }
       .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
       .settings-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
       .kpi-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+      .report-cover-page h2 { margin: 7px 0 5px; font-size: 13px; line-height: 1.1; }
+      .report-cover-page .settings-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; }
+      .report-cover-page .setting-card { min-height: auto; padding: 5px 7px; }
+      .report-cover-page .setting-card .label { font-size: 7.5px; line-height: 1.1; }
+      .report-cover-page .setting-card .value { margin-top: 3px; font-size: 10.5px; line-height: 1.08; }
+      .report-cover-page .kpi-matrix-header,
+      .report-cover-page .kpi-matrix-row { grid-template-columns: minmax(130px, 0.85fr) repeat(3, minmax(0, 1fr)); }
+      .report-cover-page .kpi-matrix-header div { padding: 4px 6px; font-size: 9px; }
+      .report-cover-page .kpi-metric-label,
+      .report-cover-page .kpi-cell { min-height: 22px; padding: 3px 6px; }
+      .report-cover-page .kpi-metric-label { font-size: 7.5px; line-height: 1.08; }
+      .report-cover-page .kpi-cell strong { font-size: 10.5px; line-height: 1.05; }
+      .report-cover-page .kpi-empty { font-size: 10px; }
+      .kpi-matrix-header,
+      .kpi-matrix-row { grid-template-columns: minmax(145px, 0.9fr) repeat(3, minmax(0, 1fr)); }
+      .kpi-matrix-header div { padding: 8px; font-size: 12px; }
+      .kpi-metric-label,
+      .kpi-cell { min-height: 38px; padding: 6px 8px; }
+      .kpi-metric-label { font-size: 9px; }
+      .kpi-cell strong { font-size: 13px; }
+      .kpi-empty { font-size: 13px; }
       .card, section { border-radius: 6px; padding: 10px; }
       .report-kpi-page .card { min-height: 66px; }
       .label { font-size: 11px; }
@@ -4756,14 +6984,20 @@
       .line-chart.arb-power-chart { max-height: 280px; }
       .column-chart { max-height: 230px; }
       .hbar-chart { max-height: 220px; }
-      .combo, .arb-layout { grid-template-columns: 1fr; gap: 10px; }
+      .combo { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .arb-layout { grid-template-columns: 0.95fr 1.05fr; gap: 10px; }
       .arb-heading { font-size: 18px; }
       .arb-item { min-height: auto; padding: 9px; }
       .arb-item strong { font-size: 17px; }
-      table { font-size: 10px; }
-      th, td { padding: 5px; }
+      table { font-size: 9px; table-layout: fixed; }
+      th, td { padding: 4px; overflow-wrap: anywhere; }
     }
-    @media (max-width: 900px) { .combo, .arb-layout { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) {
+      .combo, .arb-layout { grid-template-columns: 1fr; }
+      .kpi-matrix { overflow-x: auto; }
+      .kpi-matrix-header,
+      .kpi-matrix-row { min-width: 760px; }
+    }
   </style>
 </head>
 <body>
@@ -4804,55 +7038,19 @@
       loadInputFiles(event.target.files, "pvData", "pvFileStatus");
     }
 
+    function handleBillFile(event) {
+      loadBillFiles(event.target.files);
+    }
+
     function exportOfficialTest() {
       if (!state.lastRows.length || !state.lastSummary?.generatedAt) {
         document.getElementById("calcStatus").textContent = "Prima premi Calcola scenario, poi esporta la prova ufficiale.";
         return;
       }
-      const isArbitrage = state.lastSummary && state.lastSummary.bessMode === "arbitrage";
       const summaryRows = Object.entries(state.lastSummary).map(([key, value]) => [key, value]);
-      const hourlyHeaders = isArbitrage
-        ? [
-          "data", "ora", "pun_euro_mwh", "carica_bess_da_rete_kwh",
-          "scarica_bess_kwh", "vendita_bess_rete_kwh", "soc_percent",
-          "prelievo_rete_post_bess_kwh"
-        ]
-        : [
-          "data", "ora", "prezzo_euro_mwh", "prelievo_rete_kwh", "immesso_fv_file_kwh", "prod_fv2_kwh",
-          "surplus_fv_totale_kwh", "prelievo_rete_post_fv_kwh", "carica_bess_kwh",
-          "carica_rete_kwh", "scarica_bess_kwh", "soc_percent",
-          "prelievo_rete_post_bess_kwh", "immessa_post_bess_kwh",
-          "immessa_post_bess_fv2_valorizzata_kwh", "fv_non_valorizzabile_kwh"
-        ];
-      const hourlyRows = state.lastRows.map(row => isArbitrage
-        ? [
-          row.date,
-          row.hour,
-          row.pun,
-          row.gridCharge,
-          row.discharge,
-          row.arbitrageExport,
-          row.socPct,
-          row.postBess
-        ]
-        : [
-          row.date,
-          row.hour,
-          row.pun,
-          row.load,
-          row.exportedFv1,
-          row.fv2,
-          row.surplusFv,
-          row.postFv,
-          row.charge,
-          row.gridCharge,
-          row.discharge,
-          row.socPct,
-          row.postBess,
-          row.exportResidual,
-          row.exportResidualFv2,
-          row.curtailment
-        ]);
+      const table = hourlyExportData();
+      const hourlyHeaders = table.headers;
+      const hourlyRows = table.rows;
 
       const lines = [
         "RIEPILOGO PROVA UFFICIALE",
@@ -4879,31 +7077,65 @@
       markScenarioDirty();
     }
 
+    document.getElementById("showLoginBtn").addEventListener("click", () => showAuthPanel("login"));
+    document.getElementById("showRegisterBtn").addEventListener("click", () => showAuthPanel("register"));
+    document.getElementById("sendRegisterOtp").addEventListener("click", requestRegisterOtp);
+    document.getElementById("verifyRegisterOtp").addEventListener("click", verifyRegisterOtp);
+    document.getElementById("sendLoginOtp").addEventListener("click", requestLoginOtp);
+    document.getElementById("verifyLoginOtp").addEventListener("click", verifyLoginOtp);
+    document.getElementById("logoutBtn").addEventListener("click", logout);
+    document.getElementById("modeLogoutBtn").addEventListener("click", logout);
+    document.getElementById("titleBackToMode").addEventListener("click", returnToModeSelection);
+    document.getElementById("backToModeSelection").addEventListener("click", returnToModeSelection);
+    document.getElementById("initialBessMode").addEventListener("change", updateModeGuide);
+    document.getElementById("confirmModeBtn").addEventListener("click", applyInitialModeSelection);
     fixedBtn.addEventListener("click", () => setMode("fixed"));
     punBtn.addEventListener("click", () => setMode("pun"));
     document.getElementById("smartEProduct").addEventListener("change", () => applySmartEProduct());
     document.getElementById("smartEUnits").addEventListener("input", () => applySmartEProduct());
-    document.getElementById("bessMode").addEventListener("change", updateBessModeControls);
+    document.getElementById("bessMode").addEventListener("change", event => {
+      localStorage.setItem(SELECTED_MODE_KEY, event.target.value);
+      updateBessModeControls();
+      startParameterWizard(event.target.value);
+    });
     document.getElementById("pvModel").addEventListener("change", updatePvModelVisibility);
     document.getElementById("quickRegion").addEventListener("change", applyRegionalMonthlyProfile);
     document.getElementById("zone").addEventListener("change", handlePunZoneChange);
-    document.getElementById("calc").addEventListener("click", () => calculate({ userTriggered: true }));
+    document.getElementById("wizardSteps").addEventListener("click", event => {
+      const stepButton = event.target.closest("[data-wizard-step]");
+      if (!stepButton) return;
+      goToParameterWizardStep(stepButton.dataset.wizardStep);
+    });
+    document.getElementById("wizardBack").addEventListener("click", () => moveParameterWizard(-1));
+    document.getElementById("wizardNext").addEventListener("click", () => moveParameterWizard(1));
+    document.getElementById("calc").addEventListener("click", handleScenarioCalculation);
     document.getElementById("refreshGmePun").addEventListener("click", refreshPunFromGme);
+    document.getElementById("openGmeManual").addEventListener("click", openGmeManualDownload);
     document.getElementById("optimizeArbSpread").addEventListener("click", optimizeArbitrageSpread);
     document.getElementById("loadCompleteDemo").addEventListener("click", loadCompleteDemo);
     document.getElementById("openReport").addEventListener("click", openReport);
     document.getElementById("exportOfficial").addEventListener("click", exportOfficialTest);
     document.getElementById("exportHourlyExcel").addEventListener("click", exportHourlyExcel);
+    document.getElementById("downloadConsumptionTemplate").addEventListener("click", downloadConsumptionTemplate);
+    document.getElementById("downloadPvTemplate").addEventListener("click", downloadPvTemplate);
+    document.getElementById("downloadBillTemplate").addEventListener("click", downloadBillTemplate);
+    document.getElementById("clearConsumptionData").addEventListener("click", clearConsumptionData);
+    document.getElementById("clearPvData").addEventListener("click", clearPvData);
+    document.getElementById("clearBillData").addEventListener("click", clearBillData);
+    document.getElementById("loadDataPreview").addEventListener("click", loadDataPreview);
+    document.getElementById("loadBillDataPreview").addEventListener("click", loadBillDataPreview);
     document.getElementById("loadPvgis").addEventListener("click", loadPvgisProduction);
     document.getElementById("consumptionFile").addEventListener("change", handleConsumptionFile);
     document.getElementById("pvFile").addEventListener("change", handlePvFile);
+    document.getElementById("billFile").addEventListener("change", handleBillFile);
     document.getElementById("punFile").addEventListener("change", handlePunFile);
-    document.querySelectorAll("input, select, textarea").forEach(el => el.addEventListener("input", event => {
+    document.querySelectorAll("#appShell input, #appShell select, #appShell textarea").forEach(el => el.addEventListener("input", event => {
       if (event.target.id === "data" || event.target.id === "pvData") {
         clearDemoInputOverride();
       }
       scheduleCalculate();
     }));
+    updateAuthView();
     applySmartEProduct({ skipCalculate: true });
     updateBessModeControls({ skipCalculate: true });
     applyRegionalMonthlyProfile({ skipCalculate: true });
