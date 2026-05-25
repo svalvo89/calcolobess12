@@ -1117,7 +1117,7 @@
               </div>
               <div class="field">
                 <label for="socInitialPct">SOC iniziale [%] <span class="field-tip">consigliato 50%</span></label>
-                <input id="socInitialPct" type="number" value="100" min="0" max="100" step="1">
+                <input id="socInitialPct" type="number" value="50" min="0" max="100" step="1">
               </div>
             </div>
 
@@ -1804,7 +1804,7 @@
       if (!state.openReportAfterCalculate) return;
       if (state.lastRows.length && state.lastSummary?.generatedAt) {
         state.openReportAfterCalculate = false;
-        finishParameterWizard();
+        renderParameterWizard();
         setTimeout(openReport, 0);
       } else if (!state.punLoading) {
         state.openReportAfterCalculate = false;
@@ -2097,6 +2097,13 @@
       state.demoInputOverride = null;
     }
 
+    function applyRecommendedBessDefaults() {
+      document.getElementById("socMinPct").value = "10";
+      document.getElementById("socInitialPct").value = "50";
+      document.getElementById("etaCharge").value = "95";
+      document.getElementById("etaDischarge").value = "95";
+    }
+
     function resetScenarioParametersToZero(mode = document.getElementById("bessMode").value) {
       clearDemoInputOverride();
       state.pvgisMap = new Map();
@@ -2119,6 +2126,7 @@
       document.getElementById("quickMonthly").value = "0;0;0;0;0;0;0;0;0;0;0;0";
       document.getElementById("chargeFromSurplus").checked = false;
       document.getElementById("allowGridCharge").checked = false;
+      applyRecommendedBessDefaults();
 
       document.getElementById("fileStatus").textContent = "Nessun file consumi caricato.";
       document.getElementById("pvFileStatus").textContent = "FV immessa impostata a zero.";
@@ -2135,7 +2143,7 @@
       document.getElementById("bessMode").value = mode;
       updateBessModeControls({ skipCalculate: true });
       updatePvModelVisibility({ skipCalculate: true });
-      resetDashboardToZero("Parametri iniziali a zero: compila i campi e premi Calcola scenario.");
+      resetDashboardToZero("Parametri iniziali pronti: BESS con SOC/rendimenti consigliati, gli altri campi da compilare.");
     }
 
     function rowKey(date, hour) {
@@ -2274,7 +2282,6 @@
       if (isHybrid) {
         document.getElementById("chargeFromSurplus").checked = true;
         document.getElementById("allowGridCharge").checked = true;
-        document.getElementById("socInitialPct").value = document.getElementById("socMinPct").value;
       }
       if (isBill && state.priceMode !== "fixed") {
         setMode("fixed");
@@ -6934,7 +6941,7 @@
     th:first-child, td:first-child { text-align: left; }
     th { color: #64748b; background: #f7f9f6; }
     @media print {
-      @page { size: A4 landscape; margin: 10mm; }
+      @page { size: A4 portrait; margin: 9mm; }
       html, body { width: auto; min-height: auto; margin: 0; }
       body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       header { margin: 0 0 6mm; padding: 0 0 4mm; border-bottom: 3px solid #0f766e; background: white; color: #11231f; }
@@ -6951,14 +6958,14 @@
       .card, .arb-item, .line-chart, .column-chart, .hbar-chart, .chart, table { break-inside: avoid; page-break-inside: avoid; }
       .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
       .settings-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
-      .kpi-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+      .kpi-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
       .report-cover-page h2 { margin: 7px 0 5px; font-size: 13px; line-height: 1.1; }
-      .report-cover-page .settings-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; }
+      .report-cover-page .settings-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
       .report-cover-page .setting-card { min-height: auto; padding: 5px 7px; }
       .report-cover-page .setting-card .label { font-size: 7.5px; line-height: 1.1; }
       .report-cover-page .setting-card .value { margin-top: 3px; font-size: 10.5px; line-height: 1.08; }
       .report-cover-page .kpi-matrix-header,
-      .report-cover-page .kpi-matrix-row { grid-template-columns: minmax(130px, 0.85fr) repeat(3, minmax(0, 1fr)); }
+      .report-cover-page .kpi-matrix-row { grid-template-columns: minmax(92px, 0.8fr) repeat(3, minmax(0, 1fr)); }
       .report-cover-page .kpi-matrix-header div { padding: 4px 6px; font-size: 9px; }
       .report-cover-page .kpi-metric-label,
       .report-cover-page .kpi-cell { min-height: 22px; padding: 3px 6px; }
@@ -6966,7 +6973,7 @@
       .report-cover-page .kpi-cell strong { font-size: 10.5px; line-height: 1.05; }
       .report-cover-page .kpi-empty { font-size: 10px; }
       .kpi-matrix-header,
-      .kpi-matrix-row { grid-template-columns: minmax(145px, 0.9fr) repeat(3, minmax(0, 1fr)); }
+      .kpi-matrix-row { grid-template-columns: minmax(112px, 0.85fr) repeat(3, minmax(0, 1fr)); }
       .kpi-matrix-header div { padding: 8px; font-size: 12px; }
       .kpi-metric-label,
       .kpi-cell { min-height: 38px; padding: 6px 8px; }
